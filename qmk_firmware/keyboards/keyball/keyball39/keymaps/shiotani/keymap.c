@@ -73,9 +73,15 @@ void oledkit_render_info_user(void) {
 
 // custom settings
 #ifdef COMBO_ENABLE
-const uint16_t PROGMEM my_jq[] = {KC_J, KC_Q, COMBO_END};
+const uint16_t PROGMEM left_ctrl[] = {KC_D, KC_F, COMBO_END};
+const uint16_t PROGMEM right_ctrl[] = {KC_J, KC_K, COMBO_END};
+const uint16_t PROGMEM left_shift[] = {KC_A, KC_S, COMBO_END};
+const uint16_t PROGMEM right_shift[] = {KC_L, KC_BSPC, COMBO_END};
 
 combo_t key_combos[] = {
-COMBO(my_jq, KC_QUES),
+COMBO(left_ctrl, KC_LCTL),
+COMBO(right_ctrl, KC_RCTL),
+COMBO(left_shift, KC_LSFT),
+COMBO(right_shift, KC_RSFT),
 };
 #endif
