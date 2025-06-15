@@ -39,4 +39,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define AUTO_MOUSE_DEFAULT_LAYER 1
 
 // custom settings
-# define DYNAMIC_KEYMAP_LAYER_COUNT 5
+# define DYNAMIC_KEYMAP_LAYER_COUNT 4
