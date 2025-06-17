@@ -100,6 +100,6 @@ combo_t key_combos[] = {
   [I_O_BSPC] = COMBO(backspace, KC_BSPC),
   [W_E_TAB] = COMBO(tab, KC_TAB),
   [M_COMM_BTN1] = COMBO(btn1, KC_BTN1),
-  [COMM_DOT_BTN2] = COMBO(btn2, KC_BTN2),
+  [COMM_DOT_BTN2] = COMBO(btn2, LT(3, KC_BTN2)),
 };
 #endif
