@@ -77,7 +77,7 @@ enum combos{
   D_F_CTRL,
   J_K_CTRL,
   A_S_SHIFT,
-  L_ENT_SHIFT,
+  L_ESC_SHIFT,
   I_O_BSPC,
   W_E_TAB,
   M_COMM_BTN1,
@@ -86,7 +86,7 @@ enum combos{
 const uint16_t PROGMEM left_ctrl[] = {KC_D, KC_F, COMBO_END};
 const uint16_t PROGMEM right_ctrl[] = {KC_J, KC_K, COMBO_END};
 const uint16_t PROGMEM left_shift[] = {KC_A, KC_S, COMBO_END};
-const uint16_t PROGMEM right_shift[] = {KC_L, KC_ENT, COMBO_END};
+const uint16_t PROGMEM right_shift[] = {KC_L, KC_ESC, COMBO_END};
 const uint16_t PROGMEM backspace[] = {KC_I, KC_O, COMBO_END};
 const uint16_t PROGMEM tab[] = {KC_W, KC_E, COMBO_END};
 const uint16_t PROGMEM btn1[] = {KC_M, KC_COMM, COMBO_END};
@@ -96,7 +96,7 @@ combo_t key_combos[] = {
   [D_F_CTRL] = COMBO(left_ctrl, KC_LCTL),
   [J_K_CTRL] = COMBO(right_ctrl, KC_RCTL),
   [A_S_SHIFT] = COMBO(left_shift, KC_LSFT),
-  [L_ENT_SHIFT] = COMBO(right_shift, KC_RSFT),
+  [L_ESC_SHIFT] = COMBO(right_shift, KC_RSFT),
   [I_O_BSPC] = COMBO(backspace, KC_BSPC),
   [W_E_TAB] = COMBO(tab, KC_TAB),
   [M_COMM_BTN1] = COMBO(btn1, KC_BTN1),
