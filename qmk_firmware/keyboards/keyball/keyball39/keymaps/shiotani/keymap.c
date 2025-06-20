@@ -82,8 +82,8 @@ enum combos{
   RIGHT_SHIFT2,
   BSPC,
   TAB,
-  MOUSE_BTN1,
-  MOUSE_BTN2,
+  BTN1,
+  BTN2,
 };
 const uint16_t PROGMEM left_ctrl[] = {KC_D, KC_F, COMBO_END};
 const uint16_t PROGMEM right_ctrl[] = {KC_J, KC_K, COMBO_END};
@@ -105,7 +105,7 @@ combo_t key_combos[] = {
   [RIGHT_SHIFT2] = COMBO(right_shift2, KC_RSFT),
   [BSPC] = COMBO(backspace, KC_BSPC),
   [TAB] = COMBO(tab, KC_TAB),
-  [MOUSE_BTN1] = COMBO(btn1, KC_BTN1),
-  [MOUSE_BTN2] = COMBO(btn2, LT(3, KC_BTN2)),
+  [BTN1] = COMBO(btn1, KC_BTN1),
+  [BTN2] = COMBO(btn2, LT(3, KC_BTN2)),
 };
 #endif
