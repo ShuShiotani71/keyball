@@ -76,35 +76,23 @@ void oledkit_render_info_user(void) {
 enum combos{
   LEFT_CTRL,
   RIGHT_CTRL,
-  LEFT_SHIFT1,
-  LEFT_SHIFT2,
-  RIGHT_SHIFT1,
-  RIGHT_SHIFT2,
-  BSPC,
-  TAB,
+  LEFT_SHIFT,
+  RIGHT_SHIFT,
   BTN1,
   BTN2,
 };
 const uint16_t PROGMEM left_ctrl[] = {KC_D, KC_F, COMBO_END};
 const uint16_t PROGMEM right_ctrl[] = {KC_J, KC_K, COMBO_END};
-const uint16_t PROGMEM left_shift1[] = {KC_A, KC_S, COMBO_END};
-const uint16_t PROGMEM left_shift2[] = {KC_S, KC_D, COMBO_END};
-const uint16_t PROGMEM right_shift1[] = {KC_L, KC_ESC, COMBO_END};
-const uint16_t PROGMEM right_shift2[] = {KC_K, KC_L, COMBO_END};
-const uint16_t PROGMEM backspace[] = {KC_I, KC_O, COMBO_END};
-const uint16_t PROGMEM tab[] = {KC_W, KC_E, COMBO_END};
+const uint16_t PROGMEM left_shift[] = {KC_S, KC_D, COMBO_END};
+const uint16_t PROGMEM right_shift[] = {KC_K, KC_L, COMBO_END};
 const uint16_t PROGMEM btn1[] = {KC_M, KC_COMM, COMBO_END};
 const uint16_t PROGMEM btn2[] = {KC_COMM, KC_DOT, COMBO_END};
 
 combo_t key_combos[] = {
   [LEFT_CTRL] = COMBO(left_ctrl, KC_LCTL),
   [RIGHT_CTRL] = COMBO(right_ctrl, KC_RCTL),
-  [LEFT_SHIFT1] = COMBO(left_shift1, KC_LSFT),
-  [LEFT_SHIFT2] = COMBO(left_shift2, KC_LSFT),
-  [RIGHT_SHIFT1] = COMBO(right_shift1, KC_RSFT),
-  [RIGHT_SHIFT2] = COMBO(right_shift2, KC_RSFT),
-  [BSPC] = COMBO(backspace, KC_BSPC),
-  [TAB] = COMBO(tab, KC_TAB),
+  [LEFT_SHIFT] = COMBO(left_shift, KC_LSFT),
+  [RIGHT_SHIFT] = COMBO(right_shift, KC_RSFT),
   [BTN1] = COMBO(btn1, KC_BTN1),
   [BTN2] = COMBO(btn2, LT(3, KC_BTN2)),
 };
