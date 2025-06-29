@@ -111,8 +111,8 @@ combo_t key_combos[] = {
   [RIGHT_SHIFT] = COMBO(right_shift, KC_RSFT),
   [LEFT_CTRL_SHIFT] = COMBO(left_ctrl_shift, KC_LEFT_CTRL_SHIFT),
   [RIGHT_CTRL_SHIFT] = COMBO(right_ctrl_shift, KC_RIGHT_CTRL_SHIFT),
-  [LEFT_ALT] = COMBO(left_alt, KC_ALT),
-  [RIGHT_ALT] = COMBO(right_alt, KC_ALT),
+  [LEFT_ALT] = COMBO(left_alt, KC_LALT),
+  [RIGHT_ALT] = COMBO(right_alt, KC_RALT),
   [BTN1] = COMBO(btn1, KC_BTN1),
   [BTN2] = COMBO(btn2, LT(3, KC_BTN2)),
 };
