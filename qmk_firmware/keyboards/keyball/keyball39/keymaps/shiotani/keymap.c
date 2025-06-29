@@ -73,18 +73,29 @@ void oledkit_render_info_user(void) {
 
 // custom settings
 #ifdef COMBO_ENABLE
+enum custom_keycodes {
+    KC_LEFT_CTRL_SHIFT = SAFE_RANGE,
+    KC_RIGHT_CTRL_SHIFT,
+};
 enum combos{
   LEFT_CTRL,
   RIGHT_CTRL,
   LEFT_SHIFT,
   RIGHT_SHIFT,
+  LEFT_CTRL_SHIFT,
+  RIGHT_CTRL_SHIFT,
   BTN1,
   BTN2,
 };
 const uint16_t PROGMEM left_ctrl[] = {KC_D, KC_F, COMBO_END};
 const uint16_t PROGMEM right_ctrl[] = {KC_J, KC_K, COMBO_END};
+
 const uint16_t PROGMEM left_shift[] = {KC_S, KC_D, COMBO_END};
 const uint16_t PROGMEM right_shift[] = {KC_K, KC_L, COMBO_END};
+
+const uint16_t PROGMEM left_ctrl_shift[] = {KC_S, KC_D, KC_F, COMBO_END};
+const uint16_t PROGMEM right_ctrl_shift[] = {KC_J, KC_K, KC_L, COMBO_END};
+
 const uint16_t PROGMEM btn1[] = {KC_M, KC_COMM, COMBO_END};
 const uint16_t PROGMEM btn2[] = {KC_COMM, KC_DOT, COMBO_END};
 
@@ -93,7 +104,34 @@ combo_t key_combos[] = {
   [RIGHT_CTRL] = COMBO(right_ctrl, KC_RCTL),
   [LEFT_SHIFT] = COMBO(left_shift, KC_LSFT),
   [RIGHT_SHIFT] = COMBO(right_shift, KC_RSFT),
+  [LEFT_CTRL_SHIFT] = COMBO(left_ctrl_shift, KC_LEFT_CTRL_SHIFT),
+  [RIGHT_CTRL_SHIFT] = COMBO(right_ctrl_shift, KC_RIGHT_CTRL_SHIFT),
   [BTN1] = COMBO(btn1, KC_BTN1),
   [BTN2] = COMBO(btn2, LT(3, KC_BTN2)),
 };
 #endif
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case KC_LEFT_CTRL_SHIFT:
+            if (record->event.pressed) {
+                register_code(KC_LCTL);
+                register_code(KC_LSFT);
+            } else {
+                unregister_code(KC_LCTL);
+                unregister_code(KC_LSFT);
+            }
+            return false; // Skip further processing of this key
+
+        case KC_RIGHT_CTRL_SHIFT:
+            if (record->event.pressed) {
+                register_code(KC_LCTL);
+                register_code(KC_LSFT);
+            } else {
+                unregister_code(KC_LCTL);
+                unregister_code(KC_LSFT);
+            }
+            return false; // Skip further processing of this key
+    }
+    return true;
+}
