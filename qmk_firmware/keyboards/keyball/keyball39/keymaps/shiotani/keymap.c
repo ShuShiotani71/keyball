@@ -85,21 +85,19 @@ enum combos{
   LEFT_CTRL_SHIFT,
   RIGHT_CTRL_SHIFT,
   LEFT_ALT,
-  RIGHT_ALT,
   BTN1,
   BTN2,
 };
-const uint16_t PROGMEM left_ctrl[] = {KC_D, KC_F, COMBO_END};
-const uint16_t PROGMEM right_ctrl[] = {KC_J, KC_K, COMBO_END};
+const uint16_t PROGMEM left_ctrl[] = {KC_S, KC_D, COMBO_END};
+const uint16_t PROGMEM right_ctrl[] = {KC_K, KC_L, COMBO_END};
 
-const uint16_t PROGMEM left_shift[] = {KC_S, KC_D, COMBO_END};
-const uint16_t PROGMEM right_shift[] = {KC_K, KC_L, COMBO_END};
+const uint16_t PROGMEM left_shift[] = {KC_D, KC_F, COMBO_END};
+const uint16_t PROGMEM right_shift[] = {KC_J, KC_K, COMBO_END};
 
 const uint16_t PROGMEM left_ctrl_shift[] = {KC_S, KC_D, KC_F, COMBO_END};
 const uint16_t PROGMEM right_ctrl_shift[] = {KC_J, KC_K, KC_L, COMBO_END};
 
-const uint16_t PROGMEM left_alt[] = {KC_A, KC_S, COMBO_END};
-const uint16_t PROGMEM right_alt[] = {KC_L, KC_BSPC, COMBO_END};
+const uint16_t PROGMEM left_alt[] = {KC_C, KC_V, COMBO_END};
 
 const uint16_t PROGMEM btn1[] = {KC_M, KC_COMM, COMBO_END};
 const uint16_t PROGMEM btn2[] = {KC_COMM, KC_DOT, COMBO_END};
@@ -112,7 +110,6 @@ combo_t key_combos[] = {
   [LEFT_CTRL_SHIFT] = COMBO(left_ctrl_shift, KC_LEFT_CTRL_SHIFT),
   [RIGHT_CTRL_SHIFT] = COMBO(right_ctrl_shift, KC_RIGHT_CTRL_SHIFT),
   [LEFT_ALT] = COMBO(left_alt, KC_LALT),
-  [RIGHT_ALT] = COMBO(right_alt, KC_RALT),
   [BTN1] = COMBO(btn1, KC_BTN1),
   [BTN2] = COMBO(btn2, LT(3, KC_BTN2)),
 };
