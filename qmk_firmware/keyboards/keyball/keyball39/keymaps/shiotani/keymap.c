@@ -81,7 +81,9 @@ enum combos{
   LEFT_CTRL,
   RIGHT_CTRL,
   LEFT_SHIFT,
+  LEFT_SHIFT2,
   RIGHT_SHIFT,
+  RIGHT_SHIFT2,
   LEFT_CTRL_SHIFT,
   RIGHT_CTRL_SHIFT,
   LEFT_ALT,
@@ -93,7 +95,9 @@ const uint16_t PROGMEM left_ctrl[] = {KC_C, KC_V, COMBO_END};
 const uint16_t PROGMEM right_ctrl[] = {KC_M, KC_COMM, COMBO_END};
 
 const uint16_t PROGMEM left_shift[] = {KC_D, KC_F, COMBO_END};
+const uint16_t PROGMEM left_shift2[] = {KC_Z, KC_X, COMBO_END};
 const uint16_t PROGMEM right_shift[] = {KC_J, KC_K, COMBO_END};
+const uint16_t PROGMEM right_shift2[] = {KC_DOT, KC_TAB, COMBO_END};
 
 const uint16_t PROGMEM left_ctrl_shift[] = {KC_S, KC_D, KC_F, COMBO_END};
 const uint16_t PROGMEM right_ctrl_shift[] = {KC_J, KC_K, KC_L, COMBO_END};
@@ -108,7 +112,9 @@ combo_t key_combos[] = {
   [LEFT_CTRL] = COMBO(left_ctrl, KC_LCTL),
   [RIGHT_CTRL] = COMBO(right_ctrl, KC_RCTL),
   [LEFT_SHIFT] = COMBO(left_shift, KC_LSFT),
+  [LEFT_SHIFT2] = COMBO(left_shift2, KC_LSFT),
   [RIGHT_SHIFT] = COMBO(right_shift, KC_RSFT),
+  [RIGHT_SHIFT2] = COMBO(right_shift2, KC_RSFT),
   [LEFT_CTRL_SHIFT] = COMBO(left_ctrl_shift, KC_LEFT_CTRL_SHIFT),
   [RIGHT_CTRL_SHIFT] = COMBO(right_ctrl_shift, KC_RIGHT_CTRL_SHIFT),
   [LEFT_ALT] = COMBO(left_alt, KC_LALT),
