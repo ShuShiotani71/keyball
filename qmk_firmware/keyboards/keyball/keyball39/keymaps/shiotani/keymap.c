@@ -169,7 +169,6 @@ smtd_resolution on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap
         SMTD_MT(KC_L, KC_RCTRL)
         SMTD_MT(KC_BSPC, KC_RSFT)
     }
-    }
 
     return SMTD_RESOLUTION_UNHANDLED;
 }
