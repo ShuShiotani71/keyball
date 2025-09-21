@@ -43,3 +43,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // for sm tap dance
 #define MAX_DEFERRED_EXECUTORS 10
+
+// need to disable these if link time optimization is enabled
+#define NO_ACTION_MACRO
+#define NO_ACTION_FUNCTION
