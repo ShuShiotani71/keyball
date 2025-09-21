@@ -161,12 +161,12 @@ smtd_resolution on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap
     switch (keycode) {
         SMTD_MT(KC_A, KC_LGUI)
         SMTD_MT(KC_S, KC_LALT)
-        SMTD_MT(KC_D, KC_LCTRL)
+        SMTD_MT(KC_D, KC_LCTL)
         SMTD_MT(KC_F, KC_LSFT)
 
         SMTD_MT(KC_J, KC_RGUI)
         SMTD_MT(KC_K, KC_RALT)
-        SMTD_MT(KC_L, KC_RCTRL)
+        SMTD_MT(KC_L, KC_RCTL)
         SMTD_MT(KC_BSPC, KC_RSFT)
     }
 
