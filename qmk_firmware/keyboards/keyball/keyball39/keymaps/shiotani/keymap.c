@@ -18,6 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include QMK_KEYBOARD_H
 
+#include "sm_td.h"
 #include "quantum.h"
 
 // clang-format off
@@ -125,6 +126,12 @@ combo_t key_combos[] = {
 #endif
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    // if process_smtd is used we don't want the rest to be executed
+    if (!process_smtd(keycode, record)) {
+        return false;
+    }
+
+    // for combo mods
     switch (keycode) {
         case KC_LEFT_CTRL_SHIFT:
             if (record->event.pressed) {
@@ -147,4 +154,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return false; // Skip further processing of this key
     }
     return true;
+}
+
+// smtd config
+smtd_resolution on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
+    switch (keycode) {
+        SMTD_MT(KC_A, KC_LGUI)
+        SMTD_MT(KC_S, KC_LALT)
+        SMTD_MT(KC_D, KC_LCTRL)
+        SMTD_MT(KC_F, KC_LSFT)
+
+        SMTD_MT(KC_J, KC_RGUI)
+        SMTD_MT(KC_K, KC_RALT)
+        SMTD_MT(KC_L, KC_RCTRL)
+        SMTD_MT(KC_BSPC, KC_RSFT)
+    }
+    }
+
+    return SMTD_RESOLUTION_UNHANDLED;
 }

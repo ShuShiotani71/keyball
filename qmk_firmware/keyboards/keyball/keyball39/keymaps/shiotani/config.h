@@ -40,3 +40,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // custom settings
 # define DYNAMIC_KEYMAP_LAYER_COUNT 4
+
+// for sm tap dance
+#define MAX_DEFERRED_EXECUTORS 10
