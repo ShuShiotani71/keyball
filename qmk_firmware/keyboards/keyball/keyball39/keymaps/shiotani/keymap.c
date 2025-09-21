@@ -164,10 +164,10 @@ smtd_resolution on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap
         SMTD_MT(KC_D, KC_LCTL)
         SMTD_MT(KC_F, KC_LSFT)
 
-        SMTD_MT(KC_J, KC_RGUI)
-        SMTD_MT(KC_K, KC_RALT)
-        SMTD_MT(KC_L, KC_RCTL)
-        SMTD_MT(KC_BSPC, KC_RSFT)
+        SMTD_MT(KC_J, KC_RSFT)
+        SMTD_MT(KC_K, KC_RCTL)
+        SMTD_MT(KC_L, KC_RALT)
+        SMTD_MT(KC_BSPC, KC_RGUI)
     }
 
     return SMTD_RESOLUTION_UNHANDLED;
