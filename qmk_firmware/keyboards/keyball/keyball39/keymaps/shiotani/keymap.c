@@ -85,9 +85,9 @@ enum combos{
   RIGHT_CTRL_SHIFT,
 };
 const uint16_t PROGMEM btn1[] = {KC_K, KC_L, COMBO_END};
-const uint16_t PROGMEM btn2[] = {KC_COMM, KC_DOT, COMBO_END};
-const uint16_t PROGMEM left_ctrl_shift[] = {KC_S, KC_D, KC_F, COMBO_END};
-const uint16_t PROGMEM right_ctrl_shift[] = {KC_J, KC_K, KC_L, COMBO_END};
+const uint16_t PROGMEM btn2[] = {KC_L, KC_BSPC, COMBO_END};
+const uint16_t PROGMEM left_ctrl_shift[] = {KC_D, KC_F, COMBO_END};
+const uint16_t PROGMEM right_ctrl_shift[] = {KC_J, KC_K, COMBO_END};
 
 combo_t key_combos[] = {
   [BTN1] = COMBO_ACTION(btn1),
@@ -97,6 +97,8 @@ combo_t key_combos[] = {
 };
 #endif
 
+// need to do it this way using combo_action rather than combo
+// because sm_td library only supports combos implemented this way
 void process_combo_event(uint16_t combo_index, bool pressed) {
   switch(combo_index) {
     case BTN1:
@@ -106,7 +108,7 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
       break;
     case BTN2:
       if (pressed) {
-        tap_code16(KC_BTN1);
+	tap_code16(LT(3, KC_BTN2));
       }
       break;
     case LEFT_CTRL_SHIFT:
@@ -130,21 +132,23 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         return false;
     }
 
+    // user custom stuff go here
+
     return true;
 }
 
 // smtd config
 smtd_resolution on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
     switch (keycode) {
-        SMTD_MT(KC_A, KC_LGUI)
         SMTD_MT(KC_S, KC_LALT)
         SMTD_MT(KC_D, KC_LCTL)
         SMTD_MT(KC_F, KC_LSFT)
+        SMTD_MT(KC_G, KC_LGUI)
 
+        SMTD_MT(KC_H, KC_RGUI)
         SMTD_MT(KC_J, KC_RSFT)
         SMTD_MT(KC_K, KC_RCTL)
         SMTD_MT(KC_L, KC_RALT)
-        SMTD_MT(KC_BSPC, KC_RGUI)
     }
 
     return SMTD_RESOLUTION_UNHANDLED;
