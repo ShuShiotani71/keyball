@@ -74,56 +74,55 @@ void oledkit_render_info_user(void) {
 
 // custom settings
 #ifdef COMBO_ENABLE
-enum custom_keycodes {
+enum custom_combo_mods {
     KC_LEFT_CTRL_SHIFT = SAFE_RANGE,
     KC_RIGHT_CTRL_SHIFT,
 };
 enum combos{
-  LEFT_CTRL,
-  RIGHT_CTRL,
-  LEFT_SHIFT,
-  LEFT_SHIFT2,
-  RIGHT_SHIFT,
-  RIGHT_SHIFT2,
-  LEFT_CTRL_SHIFT,
-  RIGHT_CTRL_SHIFT,
-  LEFT_ALT,
-  LEFT_GUI,
   BTN1,
   BTN2,
+  LEFT_CTRL_SHIFT,
+  RIGHT_CTRL_SHIFT,
 };
-const uint16_t PROGMEM left_ctrl[] = {KC_C, KC_V, COMBO_END};
-const uint16_t PROGMEM right_ctrl[] = {KC_M, KC_COMM, COMBO_END};
-
-const uint16_t PROGMEM left_shift[] = {KC_D, KC_F, COMBO_END};
-const uint16_t PROGMEM left_shift2[] = {KC_Z, KC_X, COMBO_END};
-const uint16_t PROGMEM right_shift[] = {KC_J, KC_K, COMBO_END};
-const uint16_t PROGMEM right_shift2[] = {KC_DOT, KC_TAB, COMBO_END};
-
+const uint16_t PROGMEM btn1[] = {KC_K, KC_L, COMBO_END};
+const uint16_t PROGMEM btn2[] = {KC_COMM, KC_DOT, COMBO_END};
 const uint16_t PROGMEM left_ctrl_shift[] = {KC_S, KC_D, KC_F, COMBO_END};
 const uint16_t PROGMEM right_ctrl_shift[] = {KC_J, KC_K, KC_L, COMBO_END};
 
-const uint16_t PROGMEM left_alt[] = {KC_S, KC_D, COMBO_END};
-const uint16_t PROGMEM left_gui[] = {KC_X, KC_C, COMBO_END};
-
-const uint16_t PROGMEM btn1[] = {KC_K, KC_L, COMBO_END};
-const uint16_t PROGMEM btn2[] = {KC_COMM, KC_DOT, COMBO_END};
-
 combo_t key_combos[] = {
-  [LEFT_CTRL] = COMBO(left_ctrl, KC_LCTL),
-  [RIGHT_CTRL] = COMBO(right_ctrl, KC_RCTL),
-  [LEFT_SHIFT] = COMBO(left_shift, KC_LSFT),
-  [LEFT_SHIFT2] = COMBO(left_shift2, KC_LSFT),
-  [RIGHT_SHIFT] = COMBO(right_shift, KC_RSFT),
-  [RIGHT_SHIFT2] = COMBO(right_shift2, KC_RSFT),
+  [BTN1] = COMBO_ACTION(btn1),
+  [BTN2] = COMBO_ACTION(btn2),
   [LEFT_CTRL_SHIFT] = COMBO(left_ctrl_shift, KC_LEFT_CTRL_SHIFT),
   [RIGHT_CTRL_SHIFT] = COMBO(right_ctrl_shift, KC_RIGHT_CTRL_SHIFT),
-  [LEFT_ALT] = COMBO(left_alt, KC_LALT),
-  [LEFT_GUI] = COMBO(left_gui, KC_LGUI),
-  [BTN1] = COMBO(btn1, KC_BTN1),
-  [BTN2] = COMBO(btn2, LT(3, KC_BTN2)),
 };
 #endif
+
+void process_combo_event(uint16_t combo_index, bool pressed) {
+  switch(combo_index) {
+    case BTN1:
+      if (pressed) {
+        tap_code16(KC_BTN1);
+      }
+      break;
+    case BTN2:
+      if (pressed) {
+        tap_code16(KC_BTN1);
+      }
+      break;
+    case LEFT_CTRL_SHIFT:
+      if (pressed) {
+        tap_code16(KC_LCTL);
+        tap_code16(KC_LSFT);
+      }
+      break;
+    case RIGHT_CTRL_SHIFT:
+      if (pressed) {
+        tap_code16(KC_RCTL);
+        tap_code16(KC_RSFT);
+      }
+      break;
+  }
+}
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     // if process_smtd is used we don't want the rest to be executed
@@ -131,28 +130,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         return false;
     }
 
-    // for combo mods
-    switch (keycode) {
-        case KC_LEFT_CTRL_SHIFT:
-            if (record->event.pressed) {
-                register_code(KC_LCTL);
-                register_code(KC_LSFT);
-            } else {
-                unregister_code(KC_LCTL);
-                unregister_code(KC_LSFT);
-            }
-            return false; // Skip further processing of this key
-
-        case KC_RIGHT_CTRL_SHIFT:
-            if (record->event.pressed) {
-                register_code(KC_LCTL);
-                register_code(KC_LSFT);
-            } else {
-                unregister_code(KC_LCTL);
-                unregister_code(KC_LSFT);
-            }
-            return false; // Skip further processing of this key
-    }
     return true;
 }
 
