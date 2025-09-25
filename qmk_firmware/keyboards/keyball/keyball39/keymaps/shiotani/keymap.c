@@ -80,17 +80,20 @@ enum custom_combo_mods {
 };
 enum combos{
   BTN1,
+  BTN1_DRAG, // since due to homerow mods regular BTN1 cannot be used for dragging
   BTN2,
   LEFT_CTRL_SHIFT,
   RIGHT_CTRL_SHIFT,
 };
 const uint16_t PROGMEM btn1[] = {KC_K, KC_L, COMBO_END};
-const uint16_t PROGMEM btn2[] = {KC_COMM, KC_DOT, COMBO_END};
+const uint16_t PROGMEM btn1_drag[] = {KC_COMM, KC_DOT, COMBO_END};
+const uint16_t PROGMEM btn2[] = {KC_L, KC_BSPC, COMBO_END};
 const uint16_t PROGMEM left_ctrl_shift[] = {KC_D, KC_F, COMBO_END};
 const uint16_t PROGMEM right_ctrl_shift[] = {KC_J, KC_K, COMBO_END};
 
 combo_t key_combos[] = {
   [BTN1] = COMBO_ACTION(btn1),
+  [BTN1_DRAG] = COMBO_ACTION(btn1_drag),
   [BTN2] = COMBO_ACTION(btn2),
   [LEFT_CTRL_SHIFT] = COMBO(left_ctrl_shift, KC_LEFT_CTRL_SHIFT),
   [RIGHT_CTRL_SHIFT] = COMBO(right_ctrl_shift, KC_RIGHT_CTRL_SHIFT),
@@ -106,6 +109,13 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
         tap_code16(KC_BTN1);
       }
       break;
+    case BTN1_DRAG:
+      if (pressed) {
+        register_code(KC_BTN1);
+      } else {
+        unregister_code(KC_BTN1);
+      }
+      break;
     case BTN2:
       if (pressed) {
 	tap_code16(KC_BTN2);
@@ -113,14 +123,20 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
       break;
     case LEFT_CTRL_SHIFT:
       if (pressed) {
-        tap_code16(KC_LCTL);
-        tap_code16(KC_LSFT);
+        register_mods(MOD_LCTL);
+        register_mods(MOD_LSFT);
+      } else {
+        unregister_mods(MOD_LCTL);
+        unregister_mods(MOD_LSFT);
       }
       break;
     case RIGHT_CTRL_SHIFT:
       if (pressed) {
-        tap_code16(KC_RCTL);
-        tap_code16(KC_RSFT);
+        register_mods(MOD_RCTL);
+        register_mods(MOD_RSFT);
+      } else {
+        unregister_mods(MOD_RCTL);
+        unregister_mods(MOD_RSFT);
       }
       break;
   }
