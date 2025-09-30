@@ -44,3 +44,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // for sm tap dance
 #define MAX_DEFERRED_EXECUTORS 10
 #define TAPPING_TERM 200
+#define SMTD_GLOBAL_RELEASE_TERM 20
