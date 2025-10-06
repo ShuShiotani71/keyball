@@ -168,3 +168,17 @@ smtd_resolution on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap
 
     return SMTD_RESOLUTION_UNHANDLED;
 }
+
+// custom timeout for specific keys
+uint32_t get_smtd_timeout(uint16_t keycode, smtd_timeout timeout) {
+    switch (keycode) {
+        case KC_A:
+            if (timeout == SMTD_TIMEOUT_TAP) return 400;
+        case KC_S:
+            if (timeout == SMTD_TIMEOUT_TAP) return 400;
+        case KC_L:
+            if (timeout == SMTD_TIMEOUT_TAP) return 400;
+    }
+
+    return get_smtd_timeout_default(timeout);
+}
