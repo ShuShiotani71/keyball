@@ -174,10 +174,13 @@ uint32_t get_smtd_timeout(uint16_t keycode, smtd_timeout timeout) {
     switch (keycode) {
         case KC_A:
             if (timeout == SMTD_TIMEOUT_TAP) return 400;
+            if (timeout == SMTD_TIMEOUT_RELEASE) return 100;
         case KC_S:
             if (timeout == SMTD_TIMEOUT_TAP) return 400;
+            if (timeout == SMTD_TIMEOUT_RELEASE) return 100;
         case KC_L:
             if (timeout == SMTD_TIMEOUT_TAP) return 400;
+            if (timeout == SMTD_TIMEOUT_RELEASE) return 100;
     }
 
     return get_smtd_timeout_default(timeout);
