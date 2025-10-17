@@ -75,7 +75,6 @@ void oledkit_render_info_user(void) {
 #ifdef COMBO_ENABLE
 enum combos{
   BTN1,
-  BTN1_DRAG, // since due to homerow mods regular BTN1 cannot be used for dragging
   BTN2,
 };
 const uint16_t PROGMEM btn1[] = {KC_K, KC_L, COMBO_END};
@@ -83,8 +82,7 @@ const uint16_t PROGMEM btn1_drag[] = {KC_COMM, KC_DOT, COMBO_END};
 const uint16_t PROGMEM btn2[] = {KC_L, KC_BSPC, COMBO_END};
 
 combo_t key_combos[] = {
-  [BTN1] = COMBO(btn1),
-  [BTN1_DRAG] = COMBO(btn1_drag),
-  [BTN2] = COMBO(btn2),
+  [BTN1] = COMBO(btn1, KC_BTN1),
+  [BTN2] = COMBO(btn2, KC_BTN2),
 };
 #endif
