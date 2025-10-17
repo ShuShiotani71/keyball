@@ -18,7 +18,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include QMK_KEYBOARD_H
 
-#include "sm_td.h"
 #include "quantum.h"
 
 // clang-format off
@@ -84,60 +83,8 @@ const uint16_t PROGMEM btn1_drag[] = {KC_COMM, KC_DOT, COMBO_END};
 const uint16_t PROGMEM btn2[] = {KC_L, KC_BSPC, COMBO_END};
 
 combo_t key_combos[] = {
-  [BTN1] = COMBO_ACTION(btn1),
-  [BTN1_DRAG] = COMBO_ACTION(btn1_drag),
-  [BTN2] = COMBO_ACTION(btn2),
+  [BTN1] = COMBO(btn1),
+  [BTN1_DRAG] = COMBO(btn1_drag),
+  [BTN2] = COMBO(btn2),
 };
 #endif
-
-// need to do it this way using combo_action rather than combo
-// because sm_td library only supports combos implemented this way
-void process_combo_event(uint16_t combo_index, bool pressed) {
-  switch(combo_index) {
-    case BTN1:
-      if (pressed) {
-        tap_code16(KC_BTN1);
-      }
-      break;
-    case BTN1_DRAG:
-      if (pressed) {
-        register_code(KC_BTN1);
-      } else {
-        unregister_code(KC_BTN1);
-      }
-      break;
-    case BTN2:
-      if (pressed) {
-	tap_code16(KC_BTN2);
-      }
-      break;
-  }
-}
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    // if process_smtd is used we don't want the rest to be executed
-    if (!process_smtd(keycode, record)) {
-        return false;
-    }
-
-    // user custom stuff go here
-
-    return true;
-}
-
-// smtd config
-smtd_resolution on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
-    switch (keycode) {
-        SMTD_MT(KC_S, KC_LALT)
-        SMTD_MT(KC_D, KC_LCTL)
-        SMTD_MT(KC_F, KC_LSFT)
-        SMTD_MT(KC_G, KC_LGUI)
-
-        SMTD_MT(KC_J, KC_RSFT)
-        SMTD_MT(KC_K, KC_RCTL)
-        SMTD_LT(KC_L, 3)
-    }
-
-    return SMTD_RESOLUTION_UNHANDLED;
-}
-
