@@ -86,19 +86,3 @@ combo_t key_combos[] = {
   [BTN2] = COMBO(btn2, KC_BTN2),
 };
 #endif
-
-// necessary for combos and modtaps to coexit
-void process_combo_event(uint16_t combo_index, bool pressed) {
-    switch(combo_index) {
-        case BTN1:
-            if (pressed) {
-                tap_code(KC_BTN1);
-            }
-            break;
-        case BTN2:
-            if (pressed) {
-                tap_code(KC_BTN2);
-            }
-            break;
-    }
-}
