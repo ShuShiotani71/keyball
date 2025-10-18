@@ -45,4 +45,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define TAPPING_TERM 300
 
 // allow combos to coexit with mod tap
-#define COMBO_ALLOW_ACTION_KEYS
+// #define COMBO_ALLOW_ACTION_KEYS
