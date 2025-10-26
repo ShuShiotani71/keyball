@@ -78,7 +78,7 @@ enum combos{
   BTN2,
 };
 const uint16_t PROGMEM btn1[] = {KC_K, KC_L, COMBO_END};
-const uint16_t PROGMEM btn2[] = {KC_Z, KC_DOT, COMBO_END};
+const uint16_t PROGMEM btn2[] = {KC_COMM, KC_DOT, COMBO_END};
 
 combo_t key_combos[] = {
   [BTN1] = COMBO(btn1, KC_BTN1),
