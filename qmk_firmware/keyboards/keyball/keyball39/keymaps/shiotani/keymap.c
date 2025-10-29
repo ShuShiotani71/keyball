@@ -77,7 +77,7 @@ enum combos{
   BTN1,
   BTN2,
 };
-const uint16_t PROGMEM btn1[] = {MT(MOD_RCTL, KC_K), MT(mod_RALT, KC_L), COMBO_END};
+const uint16_t PROGMEM btn1[] = {MT(MOD_RCTL, KC_K), MT(MOD_RALT, KC_L), COMBO_END};
 const uint16_t PROGMEM btn2[] = {KC_COMM, KC_DOT, COMBO_END};
 
 combo_t key_combos[] = {
