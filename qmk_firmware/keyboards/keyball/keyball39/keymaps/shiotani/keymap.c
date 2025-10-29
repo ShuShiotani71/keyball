@@ -97,18 +97,3 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return g_tapping_term;
     }
 }
-
-bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case MT(MOD_LSFT, KC_F):
-          return true;
-        case MT(MOD_RSFT, KC_J):
-          return true;
-        case MT(MOD_LCTL, KC_D):
-          return true;
-        case MT(MOD_RCTL, KC_K):
-          return true;
-        default:
-            return false;
-    }
-}
