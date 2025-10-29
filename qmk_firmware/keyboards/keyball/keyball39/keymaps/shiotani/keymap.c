@@ -40,13 +40,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [2] = LAYOUT_universal(
     _______  , KC_1     , KC_2     , KC_3     , _______  ,                            _______  , KC_DEL   , KC_TAB   ,RCTL(KC_SPC), _______,
     KC_0     , KC_4     , KC_5     , KC_6     , _______  ,                            KC_LEFT  , KC_DOWN  , KC_UP    , KC_RGHT  , KC_ESC   ,
-    _______  , KC_7     , KC_8     , KC_9     , _______  ,                            MS_WHLL  , MS_WHLD  , MS_WHLU  , MS_WHLR  , KC_CAPS  ,
+    _______  , KC_7     , KC_8     , KC_9     , _______  ,                            MS_LEFT  , MS_DOWN  , MS_UP  , MS_RGHT  , KC_CAPS  ,
     _______  , _______  , _______  , _______  , _______  , KC_LSFT  ,      _______  , _______  , _______  , _______  , _______  , _______
   ),
 
   [3] = LAYOUT_universal(
     DT_PRNT  , DT_DOWN  , DT_UP    , _______  , _______  ,                            _______  , _______  , _______  , _______  , _______  ,
-    KC_MUTE  , KC_VOLD  , KC_VOLU  , LSFT(LGUI(KC_S))  , _______ ,                    _______  , MS_BTN4  , MS_BTN5  , _______  , _______  ,
+    KC_MUTE  , KC_VOLD  , KC_VOLU  , LSFT(LGUI(KC_S))  , _______ ,                    _______  , KC_MS_BTN4  , KC_MS_BTN5  , _______  , _______  ,
     _______  , KC_BRID  , KC_BRIU  , LCTL(LALT(KC_DEL)), _______ ,                    _______  , _______  , _______  , _______  , _______  ,
     _______  , _______  , _______  , _______  , _______  , _______  ,      _______  , _______  , _______  , _______  , _______  , _______
   ),
