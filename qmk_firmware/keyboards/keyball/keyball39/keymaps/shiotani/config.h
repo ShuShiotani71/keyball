@@ -42,10 +42,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define DYNAMIC_KEYMAP_LAYER_COUNT 4
 
 // for mod tap
-#define TAPPING_TERM 300
+#define TAPPING_TERM 200
 
-//#define TAPPING_TERM_PER_KEY
+#define TAPPING_TERM_PER_KEY
 #define CHORDAL_HOLD
-//#define PERMISSIVE_HOLD
-#define HOLD_ON_OTHER_KEY_PRESS
+#define PERMISSIVE_HOLD
 
