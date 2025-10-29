@@ -93,16 +93,9 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return g_tapping_term - 50; // g_tapping_term used instead of TAPPING_TERM since tapping_term_per_key is enabledTAPPING_TERM S
         case MT(MOD_RSFT, KC_J):
             return g_tapping_term - 50;
+        case MT(MOD_LGUI, KC_A):
+            return g_tapping_term + 50;
         default:
             return g_tapping_term;
-    }
-}
-
-bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case MT(MOD_LGUI, KC_A):
-            return false;
-        default:
-            return true;
     }
 }
