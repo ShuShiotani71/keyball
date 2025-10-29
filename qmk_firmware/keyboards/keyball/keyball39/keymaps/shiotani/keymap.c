@@ -25,30 +25,30 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // keymap for default (VIA)
   [0] = LAYOUT_universal(
     KC_Q     , KC_W     , KC_E     , KC_R     , KC_T     ,                            KC_Y     , KC_U     , KC_I     , KC_O     , KC_P     ,
-    KC_A     , KC_S     , KC_D     , KC_F     , KC_G     ,                            KC_H     , KC_J     , KC_K     , KC_L     , KC_MINS  ,
-    KC_Z     , KC_X     , KC_C     , KC_V     , KC_B     ,                            KC_N     , KC_M     , KC_COMM  , KC_DOT   , KC_SLSH  ,
-    KC_LCTL  , KC_LGUI  , KC_LALT  ,LSFT_T(KC_LNG2),LT(1,KC_SPC),LT(3,KC_LNG1),KC_BSPC,LT(2,KC_ENT),LSFT_T(KC_LNG2),KC_RALT,KC_RGUI, KC_RSFT
+    KC_A     , KC_S     , KC_D     , KC_F     , KC_G     ,                            KC_H     , KC_J     , KC_K     , LT(3, KC_L), KC_BSPC  ,
+    KC_Z     , KC_X     , KC_C     , KC_V     , KC_B     ,                            KC_N     , KC_M     , KC_COMM  , KC_DOT   , KC_ENT   ,
+    _______  , _______  , _______  , _______  , TO(1)    , KC_ENT   ,      KC_SPC   , TO(2)    , _______  , _______  , _______  , _______
   ),
 
   [1] = LAYOUT_universal(
-    KC_F1    , KC_F2    , KC_F3    , KC_F4    , KC_RBRC  ,                            KC_F6    , KC_F7    , KC_F8    , KC_F9    , KC_F10   ,
-    KC_F5    , KC_EXLM  , S(KC_6)  ,S(KC_INT3), S(KC_8)  ,                           S(KC_INT1), KC_BTN1  , KC_PGUP  , KC_BTN2  , KC_SCLN  ,
-    S(KC_EQL),S(KC_LBRC),S(KC_7)   , S(KC_2)  ,S(KC_RBRC),                            KC_LBRC  , KC_DLR   , KC_PGDN  , KC_BTN3  , KC_F11   ,
-    KC_INT1  , KC_EQL   , S(KC_3)  , _______  , _______  , _______  ,      TO(2)    , TO(0)    , _______  , KC_RALT  , KC_RGUI  , KC_F12
+    KC_GRV   , KC_PERC  , KC_CIRC  , KC_DLR   , KC_PIPE  ,                            KC_AT    , KC_TILD  , KC_LBRC  , KC_RBRC  , KC_SCLN  ,
+    KC_EXLM  , KC_QUES  , KC_MINS  , KC_UNDS  , KC_HASH  ,                            KC_QUOT  , KC_DQT   , KC_LPRN  , KC_RPRN  , KC_COLN  ,
+    KC_ASTR  , KC_LABK  , KC_RABK  , KC_AMPR  , KC_BSLS  ,                            KC_PLUS  , KC_EQL   , KC_LCBR  , KC_RCBR  , KC_SLSH  ,
+    _______  , _______  , _______  , _______  , _______  , _______  ,      KC_SPC   , _______  , _______  , _______  , _______  , _______
   ),
 
   [2] = LAYOUT_universal(
-    KC_TAB   , KC_7     , KC_8     , KC_9     , KC_MINS  ,                            KC_NUHS  , _______  , KC_BTN3  , _______  , KC_BSPC  ,
-   S(KC_QUOT), KC_4     , KC_5     , KC_6     ,S(KC_SCLN),                            S(KC_9)  , KC_BTN1  , KC_UP    , KC_BTN2  , KC_QUOT  ,
-    KC_SLSH  , KC_1     , KC_2     , KC_3     ,S(KC_MINS),                           S(KC_NUHS), KC_LEFT  , KC_DOWN  , KC_RGHT  , _______  ,
-    KC_ESC   , KC_0     , KC_DOT   , KC_DEL   , KC_ENT   , KC_BSPC  ,      _______  , _______  , _______  , _______  , _______  , _______
+    _______  , KC_1     , KC_2     , KC_3     , _______  ,                            _______  , KC_DEL   , KC_TAB   ,RCTL(KC_SPC), _______,
+    KC_0     , KC_4     , KC_5     , KC_6     , _______  ,                            KC_LEFT  , KC_DOWN  , KC_UP    , KC_RGHT  , KC_ESC   ,
+    _______  , KC_7     , KC_8     , KC_9     , _______  ,                            MS_WHLL  , MS_WHLD  , MS_WHLU  , MS_WHLR  , KC_CAPS  ,
+    _______  , _______  , _______  , _______  , _______  , KC_LSFT  ,      _______  , _______  , _______  , _______  , _______  , _______
   ),
 
   [3] = LAYOUT_universal(
-    RGB_TOG  , AML_TO   , AML_I50  , AML_D50  , _______  ,                            _______  , _______  , SSNP_HOR , SSNP_VRT , SSNP_FRE ,
-    RGB_MOD  , RGB_HUI  , RGB_SAI  , RGB_VAI  , SCRL_DVI ,                            _______  , _______  , _______  , _______  , _______  ,
-    RGB_RMOD , RGB_HUD  , RGB_SAD  , RGB_VAD  , SCRL_DVD ,                            CPI_D1K  , CPI_D100 , CPI_I100 , CPI_I1K  , KBC_SAVE ,
-    QK_BOOT  , KBC_RST  , _______  , _______  , _______  , _______  ,      _______  , _______  , _______  , _______  , KBC_RST  , QK_BOOT
+    DT_PRNT  , DT_DOWN  , DT_UP    , _______  , _______  ,                            _______  , _______  , _______  , _______  , _______  ,
+    KC_MUTE  , KC_VOLD  , KC_VOLU  , LSFT(LGUI(KC_S))  , _______ ,                    _______  , MS_BTN4  , MS_BTN5  , _______  , _______  ,
+    _______  , KC_BRID  , KC_BRIU  , LCTL(LALT(KC_DEL)), _______ ,                    _______  , _______  , _______  , _______  , _______  ,
+    _______  , _______  , _______  , _______  , _______  , _______  ,      _______  , _______  , _______  , _______  , _______  , _______
   ),
 };
 // clang-format on
@@ -77,7 +77,7 @@ enum combos{
   BTN1,
   BTN2,
 };
-const uint16_t PROGMEM btn1[] = {MT(MOD_RCTL, KC_K), MT(MOD_RALT, KC_L), COMBO_END};
+const uint16_t PROGMEM btn1[] = {KC_K, LT(3, KC_L), COMBO_END};
 const uint16_t PROGMEM btn2[] = {KC_COMM, KC_DOT, COMBO_END};
 
 combo_t key_combos[] = {
@@ -85,15 +85,3 @@ combo_t key_combos[] = {
   [BTN2] = COMBO(btn2, KC_BTN2),
 };
 #endif
-
-// per key tapping term
-uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case MT(MOD_LSFT, KC_F):
-            return g_tapping_term - 50; // g_tapping_term used instead of TAPPING_TERM since tapping_term_per_key is enabledTAPPING_TERM S
-        case MT(MOD_RSFT, KC_J):
-            return g_tapping_term - 50;
-        default:
-            return g_tapping_term;
-    }
-}
