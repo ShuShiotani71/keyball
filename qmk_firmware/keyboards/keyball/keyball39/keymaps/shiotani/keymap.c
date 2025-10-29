@@ -87,13 +87,21 @@ combo_t key_combos[] = {
 #endif
 
 // per key tapping term
-uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case MT(MOD_LSFT, KC_F):
-            return g_tapping_term - 50; // g_tapping_term used instead of TAPPING_TERM since tapping_term_per_key is enabledTAPPING_TERM S
-        case MT(MOD_RSFT, KC_J):
-            return g_tapping_term- 50;
-        default:
-            return g_tapping_term;
-    }
-}
+//uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+//    switch (keycode) {
+//        case MT(MOD_LSFT, KC_F):
+//            return g_tapping_term - 50; // g_tapping_term used instead of TAPPING_TERM since tapping_term_per_key is enabledTAPPING_TERM S
+//        case MT(MOD_RSFT, KC_J):
+//            return g_tapping_term- 50;
+//        default:
+//            return g_tapping_term;
+//    }
+//}
+
+const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
+    LAYOUT(
+        'L', 'L', 'L', 'L', 'L',            'R', 'R', 'R', 'R', 'R',
+        'L', 'L', 'L', 'L', 'L',            'R', 'R', 'R', 'R', 'R',
+        'L', 'L', 'L', 'L', 'L',            'R', 'R', 'R', 'R', 'R',
+        'L', 'L', 'L', '*', '*', '*',  '*', '*', '*', 'R', 'R', 'R'
+    );
