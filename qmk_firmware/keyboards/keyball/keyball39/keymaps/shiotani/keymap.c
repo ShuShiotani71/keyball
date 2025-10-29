@@ -77,7 +77,7 @@ enum combos{
   BTN1,
   BTN2,
 };
-const uint16_t PROGMEM btn1[] = {MT(MOD_RALT, KC_K), LT(3, KC_L), COMBO_END};
+const uint16_t PROGMEM btn1[] = {MT(MOD_RCTL, KC_K), MT(mod_RALT, KC_L), COMBO_END};
 const uint16_t PROGMEM btn2[] = {KC_COMM, KC_DOT, COMBO_END};
 
 combo_t key_combos[] = {
@@ -85,3 +85,15 @@ combo_t key_combos[] = {
   [BTN2] = COMBO(btn2, KC_BTN2),
 };
 #endif
+
+// per key tapping term
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case MT(MOD_LSFT, KC_F):
+            return TAPPING_TERM - 50;
+        case MT(MOD_RSFT, KC_J):
+            return TAPPING_TERM - 50;
+        default:
+            return TAPPING_TERM;
+    }
+}
