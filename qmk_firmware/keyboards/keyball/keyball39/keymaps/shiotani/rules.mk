@@ -14,3 +14,5 @@ MOUSEKEY_ENABLE = yes
 
 # for sm tap dance
 DEFERRED_EXEC_ENABLE = yes
+
+DYNAMIC_TAPPING_TERM_ENABLE = yes
