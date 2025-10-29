@@ -102,6 +102,8 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case MT(MOD_LGUI, KC_A):
             return false;
+        case MT(MOD_LALT, KC_S):
+            return false;
         default:
             return true;
     }
