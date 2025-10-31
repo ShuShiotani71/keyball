@@ -20,14 +20,26 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "quantum.h"
 
+
+// come up with something better
+const key_override_t comm_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_COMM, KC_SCLN);
+const key_override_t dot_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_DOT, KC_COLN);
+
+const key_override_t **key_overrides = (const key_override_t *[]){
+	&comm_key_override,
+	&dot_key_override,
+	NULL
+};
+
+
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // keymap for default (VIA)
   [0] = LAYOUT_universal(
     KC_Q     , KC_W     , KC_E     , KC_R     , KC_T     ,                            KC_Y     , KC_U     , KC_I     , KC_O     , KC_P     ,
-    KC_A     , KC_S     , KC_D     , KC_F     , KC_G     ,                            KC_H     , KC_J     , KC_K     , LT(3, KC_L), KC_BSPC  ,
+    KC_A     , KC_S     ,MT(MOD_LGUI, KC_D), MT(MOD_LALT, KC_F), KC_G,                KC_H     , KC_J     , KC_K     ,LT(3,KC_L), KC_BSPC  ,
     KC_Z     , KC_X     , KC_C     , KC_V     , KC_B     ,                            KC_N     , KC_M     , KC_COMM  , KC_DOT   , OSM(MOD_RCTL),
-    _______  , _______  , _______  , _______  , MO(1)    , OSM(MOD_LSFT)   ,      KC_SPC   , MO(2)    , _______  , _______  , _______  , _______
+    _______  , _______  , _______  , _______  , MO(1)    , OSM(MOD_LSFT),  KC_SPC   , MO(2)    , _______  , _______  , _______  , _______
   ),
 
   [1] = LAYOUT_universal(
@@ -38,7 +50,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [2] = LAYOUT_universal(
-    _______  , KC_1     , KC_2     , KC_3     , _______  ,                            _______  , KC_DEL   , KC_TAB   ,RCTL(KC_SPC), _______,
+    _______  , KC_1     , KC_2     , KC_3     , _______  ,                            KC_DEL   , RSFT(KC_TAB), KC_TAB   ,RCTL(KC_SPC), _______,
     KC_0     , KC_4     , KC_5     , KC_6     , _______  ,                            KC_LEFT  , KC_DOWN  , KC_UP    , KC_RGHT  , KC_ESC   ,
     _______  , KC_7     , KC_8     , KC_9     , _______  ,                            KC_MS_WH_LEFT  , KC_MS_WH_DOWN  , KC_MS_WH_UP  , KC_MS_WH_RIGHT  , KC_CAPS  ,
     _______  , _______  , _______  , _______  , _______  , OSM(MOD_LSFT)  ,      _______  , _______  , _______  , _______  , _______  , _______
@@ -76,12 +88,15 @@ void oledkit_render_info_user(void) {
 enum combos{
   BTN1,
   BTN2,
+  ENTER,
 };
 const uint16_t PROGMEM btn1[] = {KC_K, LT(3, KC_L), COMBO_END};
 const uint16_t PROGMEM btn2[] = {KC_COMM, KC_DOT, COMBO_END};
+const uint16_t PROGMEM enter[] = {KC_I, KC_O, COMBO_END};
 
 combo_t key_combos[] = {
   [BTN1] = COMBO(btn1, KC_BTN1),
   [BTN2] = COMBO(btn2, KC_BTN2),
+  [ENTER] = COMBO(enter, KC_ENTER),
 };
 #endif
