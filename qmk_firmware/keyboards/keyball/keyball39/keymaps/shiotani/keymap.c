@@ -26,8 +26,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_universal(
     KC_Q     , KC_W     , KC_E     , KC_R     , KC_T     ,                            KC_Y     , KC_U     , KC_I     , KC_O     , KC_P     ,
     KC_A     , KC_S     , KC_D     , KC_F     , KC_G     ,                            KC_H     , KC_J     , KC_K     , LT(3, KC_L), KC_BSPC  ,
-    KC_Z     , KC_X     , KC_C     , KC_V     , KC_B     ,                            KC_N     , KC_M     , KC_COMM  , KC_DOT   , KC_ENT   ,
-    _______  , _______  , _______  , _______  , TO(1)    , KC_ENT   ,      KC_SPC   , TO(2)    , _______  , _______  , _______  , _______
+    KC_Z     , KC_X     , KC_C     , KC_V     , KC_B     ,                            KC_N     , KC_M     , KC_COMM  , KC_DOT   , OSM(MOD_RCTL),
+    _______  , _______  , _______  , _______  , MO(1)    , OSM(MOD_LSFT)   ,      KC_SPC   , MO(2)    , _______  , _______  , _______  , _______
   ),
 
   [1] = LAYOUT_universal(
@@ -41,7 +41,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______  , KC_1     , KC_2     , KC_3     , _______  ,                            _______  , KC_DEL   , KC_TAB   ,RCTL(KC_SPC), _______,
     KC_0     , KC_4     , KC_5     , KC_6     , _______  ,                            KC_LEFT  , KC_DOWN  , KC_UP    , KC_RGHT  , KC_ESC   ,
     _______  , KC_7     , KC_8     , KC_9     , _______  ,                            KC_MS_WH_LEFT  , KC_MS_WH_DOWN  , KC_MS_WH_UP  , KC_MS_WH_RIGHT  , KC_CAPS  ,
-    _______  , _______  , _______  , _______  , _______  , KC_LSFT  ,      _______  , _______  , _______  , _______  , _______  , _______
+    _______  , _______  , _______  , _______  , _______  , OSM(MOD_LSFT)  ,      _______  , _______  , _______  , _______  , _______  , _______
   ),
 
   [3] = LAYOUT_universal(
