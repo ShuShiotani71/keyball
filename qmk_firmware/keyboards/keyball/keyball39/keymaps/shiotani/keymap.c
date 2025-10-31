@@ -100,11 +100,11 @@ enum combos{
 };
 const uint16_t PROGMEM btn1[] = {KC_K, LT(3, KC_L), COMBO_END};
 const uint16_t PROGMEM btn2[] = {KC_COMM, KC_DOT, COMBO_END};
-const uint16_t PROGMEM layer4[] = {TO(1), TO(2), COMBO_END};
+const uint16_t PROGMEM layer4[] = {MO(1), MO(2), COMBO_END};
 
 combo_t key_combos[] = {
   [BTN1] = COMBO(btn1, KC_BTN1),
   [BTN2] = COMBO(btn2, KC_BTN2),
-  [LAYER4] = COMBO(layer4, TO(4)),
+  [LAYER4] = COMBO(layer4, MO(4)),
 };
 #endif
