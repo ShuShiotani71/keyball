@@ -20,17 +20,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "quantum.h"
 
-const key_override_t **key_overrides = (const key_override_t*[]) {
-    // When KC_RSFT + KC_COMM (Shift + ,) is pressed, it becomes KC_EXLM (!)
-    &((key_override_t){.key_code = KC_COMM, .mods = MOD_BIT(KC_LSFT), .override_code = KC_SCLN}),
-
-    // When KC_LSFT + KC_DOT (Shift + .) is pressed, it becomes KC_QUES (?)
-    &((key_override_t){.key_code = KC_DOT, .mods = MOD_BIT(KC_LSFT), .override_code = KC_COLN}),
-
-    // Use MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT) for both shift keys
-    &((key_override_t){.key_code = KC_EXLM, .mods = MOD_BIT(KC_LSFT), .override_code = KC_QUES}),
-
-    NULL
+{
+  "modules": ["getreuer/custom_shift_keys"]
+}
+const custom_shift_key_t custom_shift_keys[] = {
+  {KC_DOT , KC_COLN},
+  {KC_COMM, KC_SCLN},
+  {KC_EXLM, KC_QUES}
 };
 
 
@@ -46,14 +42,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [1] = LAYOUT_universal(
     _______  , KC_DEL   , KC_TAB   , KC_ESC   , _______  ,                            _______  , KC_DEL   , KC_TAB   ,RCTL(KC_SPC), _______ ,
-    OS_LGUI  , OS_LALT  , OS_LCTL  , OS_LSFT  , RTL(KC_SPC)  ,                            KC_LEFT  , KC_DOWN  , KC_UP  , KC_RIGHT  , KC_ESC    ,
+    OSM(MOD_LGUI)  , OSM(MOD_LALT)  , OSM(MOD_LCTL)  , OSM(MOD_LSFT)  , RCTL(KC_SPC)  ,                            KC_LEFT  , KC_DOWN  , KC_UP  , KC_RIGHT  , KC_ESC    ,
     _______  , _______  , _______  , _______  , _______  ,                            KC_MS_WH_LEFT  , KC_MS_WH_DOWN , KC_MS_WH_UP  , KC_MS_WH_RIGHT  , KC_CAPS  ,
     _______  , _______  , _______  , _______  , _______  , _______ ,        KC_SPC  , _______  , _______  , _______  , _______  , _______
   ),
 
   [2] = LAYOUT_universal(
     KC_GRV   , KC_PERC  , KC_CIRC  , KC_DLR   , KC_PIPE  ,                            KC_AT    , KC_TILD  , KC_LBRC  , KC_RBRC  , KC_MINS  ,
-    KC_QUOT  , KC_DQT   , KC_LPRN  , KC_RPRN  , KC_UNDS  ,                            KC_HASH  , OS_RSFT  , OS_RCTL  , OS_RALT  , OS_RGUI   ,
+    KC_QUOT  , KC_DQT   , KC_LPRN  , KC_RPRN  , KC_UNDS  ,                            KC_HASH  , OSM(MOD_RSFT)  , OSM(MOD_RCTL)  , OSM(MOD_RALT)  , OSM(MOD_RGUI)   ,
     KC_ASTR  , KC_LABK  , KC_RABK  , KC_AMPR  , KC_BSLS  ,                            KC_PLUS  , KC_EQL   , KC_LCBR  , KC_RCBR  , KC_SLSH  ,
     _______  , _______  , _______  , _______  , _______  , KC_ENT  ,       _______  , _______  , _______  , _______  , _______  , _______
   ),
