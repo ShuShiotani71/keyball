@@ -12,6 +12,4 @@ EXTRAKEY_ENABLE = yes
 # scrolling using buttons
 MOUSEKEY_ENABLE = yes
 
-DYNAMIC_TAPPING_TERM_ENABLE = yes
-
 KEY_OVERRIDE_ENABLE = yes
