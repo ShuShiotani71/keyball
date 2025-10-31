@@ -20,13 +20,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "quantum.h"
 
-{
-  "modules": ["getreuer/custom_shift_keys"]
-}
-const custom_shift_key_t custom_shift_keys[] = {
-  {KC_DOT , KC_COLN},
-  {KC_COMM, KC_SCLN},
-  {KC_EXLM, KC_QUES}
+
+const key_override_t comm_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_COMM, KC_SCLN);
+const key_override_t dot_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_DOT, KC_COLN);
+const key_override_t exlm_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_EXLM, KC_QUES);
+
+const key_override_t **key_overrides = (const key_override_t *[]){
+	&comm_key_override,
+	&dot_key_override,
+	&exlm_key_override,
+	NULL
 };
 
 
