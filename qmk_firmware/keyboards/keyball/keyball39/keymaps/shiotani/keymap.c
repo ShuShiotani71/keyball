@@ -22,8 +22,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
 // come up with something better
-const key_override_t comm_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_COMM, KC_SCLN);
-const key_override_t dot_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_DOT, KC_COLN);
+const key_override_t comm_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_COMM, KC_TILD);
+const key_override_t dot_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_DOT, KC_HASH);
 
 const key_override_t **key_overrides = (const key_override_t *[]){
 	&comm_key_override,
@@ -37,14 +37,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // keymap for default (VIA)
   [0] = LAYOUT_universal(
     KC_Q     , KC_W     , KC_E     , KC_R     , KC_T     ,                            KC_Y     , KC_U     , KC_I     , KC_O     , KC_P     ,
-    KC_A     , KC_S     ,MT(MOD_LGUI, KC_D), MT(MOD_LALT, KC_F), KC_G,                KC_H     , KC_J     , KC_K     ,LT(3,KC_L), KC_BSPC  ,
-    KC_Z     , KC_X     , KC_C     , KC_V     , KC_B     ,                            KC_N     , KC_M     , KC_COMM  , KC_DOT   , OSM(MOD_RCTL),
-    _______  , _______  , _______  , _______  , MO(1)    , OSM(MOD_LSFT),  KC_SPC   , MO(2)    , _______  , _______  , _______  , _______
+    KC_A     , KC_S     ,MT(MOD_LGUI, KC_D), MT(MOD_LALT, KC_F), KC_G,                KC_H     , MT(MOD_RALT, KC_J) , MT(MOD_RGUI, KC_K) , LT(3,KC_L), KC_SPC  ,
+    KC_Z     , KC_X     , KC_C     , KC_V     , KC_B     ,                            KC_N     , KC_M     , KC_COMM  , KC_DOT   , KC_BSPC,
+    _______  , _______  , _______  , _______  , OSL(1)    , OSM(MOD_LSFT),  OSM(MOD_RCTL)   , OSL(2)    , _______  , _______  , _______  , _______
   ),
 
   [1] = LAYOUT_universal(
-    KC_GRV   , KC_PERC  , KC_CIRC  , KC_DLR   , KC_PIPE  ,                            KC_AT    , KC_TILD  , KC_LBRC  , KC_RBRC  , KC_SCLN  ,
-    KC_EXLM  , KC_QUES  , KC_MINS  , KC_UNDS  , KC_HASH  ,                            KC_QUOT  , KC_DQT   , KC_LPRN  , KC_RPRN  , KC_COLN  ,
+    KC_GRV   , KC_PERC  , KC_CIRC  , KC_DLR   , KC_PIPE  ,                            KC_AT    , KC_QUOT  , KC_LBRC  , KC_RBRC  , KC_SCLN  ,
+    KC_EXLM  , KC_QUES  , KC_MINS  , KC_UNDS  , _______  ,                            _______  , KC_DQT   , KC_LPRN  , KC_RPRN  , KC_COLN  ,
     KC_ASTR  , KC_LABK  , KC_RABK  , KC_AMPR  , KC_BSLS  ,                            KC_PLUS  , KC_EQL   , KC_LCBR  , KC_RCBR  , KC_SLSH  ,
     _______  , _______  , _______  , _______  , _______  , _______  ,      KC_SPC   , _______  , _______  , _______  , _______  , _______
   ),
@@ -89,14 +89,20 @@ enum combos{
   BTN1,
   BTN2,
   ENTER,
+  TAB,
+  BACKSPACE,
 };
-const uint16_t PROGMEM btn1[] = {KC_K, LT(3, KC_L), COMBO_END};
+const uint16_t PROGMEM btn1[] = {MT(MOD_RGUI, KC_K), LT(3, KC_L), COMBO_END};
 const uint16_t PROGMEM btn2[] = {KC_COMM, KC_DOT, COMBO_END};
 const uint16_t PROGMEM enter[] = {KC_I, KC_O, COMBO_END};
+const uint16_t PROGMEM tab[] = {KC_W, KC_E, COMBO_END};
+const uint16_t PROGMEM backspace[] = {KC_S, MT(MOD_LGUI, KC_D), COMBO_END};
 
 combo_t key_combos[] = {
   [BTN1] = COMBO(btn1, KC_BTN1),
   [BTN2] = COMBO(btn2, KC_BTN2),
   [ENTER] = COMBO(enter, KC_ENTER),
+  [TAB] = COMBO(tab, KC_TAB),
+  [BACKSPACE] = COMBO(backspace, KC_BSPC),
 };
 #endif
