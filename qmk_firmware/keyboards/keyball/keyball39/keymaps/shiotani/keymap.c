@@ -38,7 +38,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_universal(
     KC_Q               , KC_W               , KC_E               , KC_R               , KC_T               ,                                           KC_Y               , KC_U               , KC_I               , KC_O               , KC_P               ,
     KC_A               , KC_S               , MT(MOD_LGUI, KC_D) , MT(MOD_LALT, KC_F) , KC_G               ,                                           KC_H               , MT(MOD_RALT, KC_J) , MT(MOD_RGUI, KC_K) , LT(3, KC_L)        , KC_SPC             ,
-    KC_Z               , KC_X               , KC_C               , KC_V               , KC_B               ,                                           KC_N               , KC_M               , KC_COMM            , KC_DOT             , KC_BSPC            ,
+    KC_Z               , KC_X               , KC_C               , KC_V               , KC_B               ,                                           KC_N               , KC_M               , KC_COMM            , KC_DOT             , KC_ENTER           ,
     _______            , _______            , _______            , _______            , OSL(1)             , OSM(MOD_LSFT)       , OSM(MOD_RCTL)     , OSL(2)             , _______            , _______            , _______            , _______
   ),
 
@@ -50,7 +50,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   
   [2] = LAYOUT_universal(
-    _______            , KC_1               , KC_2               , KC_3               , _______            ,                                           KC_DEL             , RSFT(KC_TAB)       , KC_TAB             , RCTL(KC_SPC)       , _______            ,
+    _______            , KC_1               , KC_2               , KC_3               , _______            ,                                           _______            , KC_DEL             , KC_BSPC            , RCTL(KC_SPC)       , _______            ,
     KC_0               , KC_4               , KC_5               , KC_6               , _______            ,                                           KC_LEFT            , KC_DOWN            , KC_UP              , KC_RGHT            , KC_ESC             ,
     _______            , KC_7               , KC_8               , KC_9               , _______            ,                                           KC_MS_WH_LEFT      , KC_MS_WH_DOWN      , KC_MS_WH_UP        , KC_MS_WH_RIGHT     , KC_CAPS            ,
     _______            , _______            , _______            , _______            , _______            , OSM(MOD_LSFT)       , _______           , _______            , _______            , _______            , _______            , _______
@@ -95,9 +95,9 @@ enum combos{
 };
 const uint16_t PROGMEM btn1[] = {MT(MOD_RGUI, KC_K), LT(3, KC_L), COMBO_END};
 const uint16_t PROGMEM btn2[] = {KC_COMM, KC_DOT, COMBO_END};
-const uint16_t PROGMEM enter[] = {KC_I, KC_O, COMBO_END};
+const uint16_t PROGMEM enter[] = {KC_S, MT(MOD_LGUI, KC_D), COMBO_END};
 const uint16_t PROGMEM tab[] = {KC_W, KC_E, COMBO_END};
-const uint16_t PROGMEM backspace[] = {KC_S, MT(MOD_LGUI, KC_D), COMBO_END};
+const uint16_t PROGMEM backspace[] = {KC_I, KC_O, COMBO_END};
 
 combo_t key_combos[] = {
   [BTN1] = COMBO(btn1, KC_BTN1),
