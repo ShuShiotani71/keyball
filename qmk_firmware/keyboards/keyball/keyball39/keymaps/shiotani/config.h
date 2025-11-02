@@ -43,6 +43,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // for mod tap
 #define TAPPING_TERM 250
+#define TAPPING_TERM_PER_KEY
 
 // oneshot config
 #define ONESHOT_TAP_TOGGLE 3  /* Tapping this number of times holds the key until tapped once again. */
