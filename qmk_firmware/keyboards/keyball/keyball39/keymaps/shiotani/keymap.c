@@ -30,22 +30,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	// NULL
 // };
 
-enum custom_keycodes {
-    OKAY = SAFE_RANGE,
-};
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-    case OKAY:
-        if (record->event.pressed) {
-            SEND_STRING("ｵｯｹｰ☆⌒d(´∀｀)ノ");
-        } else {
-        }
-        break;
-    }
-    return true;
-};
-
 
 #define D_LGUI MT(MOD_LGUI, KC_D)
 #define F_LALT MT(MOD_LALT, KC_F)
