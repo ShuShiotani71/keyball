@@ -19,7 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include QMK_KEYBOARD_H
 
 #include "quantum.h"
-#include "ascii_arts.reze.h"
+#include "ascii_arts/reze.h"
 
 
 // const key_override_t comm_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_COMM, KC_TILD);
@@ -102,9 +102,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [3] = LAYOUT_universal(
-      DT_PRNT      , DT_DOWN      , DT_UP        , _______      , _______      ,                               _______      , _______      , _______      , _______      , _______      ,
-      KC_MUTE      , KC_VOLD      , KC_VOLU      , SCRN_SHT     , _______      ,                               _______      , KC_MS_BTN4   , KC_MS_BTN5   , _______      , _______      ,
-      _______      , KC_BRID      , KC_BRIU      , WIN_SEC      , _______      ,                               _______      , _______      , _______      , _______      , _______      ,
+      DT_PRNT      , DT_DOWN      , DT_UP        , _______      , EMAIL        ,                               _______      , _______      , _______      , _______      , _______      ,
+      KC_MUTE      , KC_VOLD      , KC_VOLU      , SCRN_SHT     , NAME         ,                               _______      , KC_MS_BTN4   , KC_MS_BTN5   , _______      , _______      ,
+      _______      , KC_BRID      , KC_BRIU      , WIN_SEC      , REZE         ,                               _______      , _______      , _______      , _______      , _______      ,
       _______      , _______      , _______      , _______      , _______      , KC_LSFT      , SPC_RCTL     , _______      , _______      , _______      , _______      , _______
   ),
 
