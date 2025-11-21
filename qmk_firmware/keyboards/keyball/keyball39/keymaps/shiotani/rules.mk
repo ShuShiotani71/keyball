@@ -1,3 +1,5 @@
+SRC += $(KEYMAP)/ascii_arts/reze.c
+
 # RGBLIGHT_ENABLE = yes
 
 OLED_ENABLE = yes
