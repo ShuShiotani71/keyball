@@ -19,6 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include QMK_KEYBOARD_H
 
 #include "quantum.h"
+#include "ascii_arts.reze.h"
 
 
 // const key_override_t comm_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_COMM, KC_TILD);
@@ -29,6 +30,34 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	// &dot_key_override,
 	// NULL
 // };
+
+
+enum custom_keycodes {
+    EMAIL = SAFE_RANGE,
+    NAME,
+    REZE,
+};
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+    case EMAIL:
+        if (record->event.pressed) {
+            SEND_STRING("shu.shiotani70@gmail.com");
+        }
+        return false;
+    case NAME:
+        if (record->event.pressed) {
+            SEND_STRING("Shu Shiotani");
+        }
+        return false;
+    case REZE:
+        if (record->event.pressed) {
+            SEND_STRING(REZE_ASCII);
+        }
+        return false;
+    }
+    return true;
+};
 
 
 #define D_LGUI MT(MOD_LGUI, KC_D)
