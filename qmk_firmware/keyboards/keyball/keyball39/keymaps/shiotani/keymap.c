@@ -52,7 +52,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         return false;
     case REZE:
         if (record->event.pressed) {
-            SEND_STRING(REZE_ASCII);
+            send_string(REZE_ASCII);
         }
         return false;
     }
