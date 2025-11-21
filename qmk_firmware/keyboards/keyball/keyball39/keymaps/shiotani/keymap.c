@@ -19,7 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include QMK_KEYBOARD_H
 
 #include "quantum.h"
-#include "ascii_arts/reze.h"
+#include "ascii_arts/ascii_arts.h"
 
 
 // const key_override_t comm_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_COMM, KC_TILD);

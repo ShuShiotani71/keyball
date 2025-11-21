@@ -1,3 +1,5 @@
+#include "ascii_arts.h"
+
 const char* REZE_ASCII =
     "                                                               "
     "                       &$$XX$$$                                "
