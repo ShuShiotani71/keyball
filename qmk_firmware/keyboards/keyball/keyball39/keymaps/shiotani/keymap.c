@@ -107,15 +107,21 @@ enum combos{
   BTN1,
   BTN2,
   TAB,
+  ENTER,
+  ESC,
 };
 const uint16_t PROGMEM btn1[] = {MT(MOD_RGUI, KC_K), LT(3, KC_L), COMBO_END};
 const uint16_t PROGMEM btn2[] = {KC_COMM, KC_DOT, COMBO_END};
 const uint16_t PROGMEM tab[] = {KC_I, KC_O, COMBO_END};
+const uint16_t PROGMEM enter[] = {KC_W, KC_E, COMBO_END};
+const uint16_t PROGMEM esc[] = {KC_S, KC_D, COMBO_END};
 
 combo_t key_combos[] = {
   [BTN1] = COMBO(btn1, KC_BTN1),
   [BTN2] = COMBO(btn2, KC_BTN2),
   [TAB] = COMBO(tab, KC_TAB),
+  [ENTER] = COMBO(enter, KC_ENT),
+  [ESC] = COMBO(esc, KC_ESC),
 };
 #endif
 
