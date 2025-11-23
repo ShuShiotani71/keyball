@@ -1,4 +1,5 @@
-SRC += $(KEYMAP)/ascii_arts/reze.c
+#SRC += $(KEYMAP)/ascii_arts/reze.c
+SRC += keyball39/keymaps/shiotani/ascii_arts/reze.c
 
 # RGBLIGHT_ENABLE = yes
 
