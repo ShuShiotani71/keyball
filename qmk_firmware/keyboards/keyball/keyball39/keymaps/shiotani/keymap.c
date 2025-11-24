@@ -35,7 +35,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 enum custom_keycodes {
     EMAIL = SAFE_RANGE,
     NAME,
-    REZE,
+    BUNNY,
+    THUMBSUP,
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -50,9 +51,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             SEND_STRING("Shu Shiotani");
         }
         return false;
-    case REZE:
+    case BUNNY:
         if (record->event.pressed) {
-            send_string(REZE_ASCII);
+            send_string(BUNNY_ASCII);
+        }
+        return false;
+    case THUMBSUP:
+        if (record->event.pressed) {
+            send_string(THUMBSUP_ASCII);
         }
         return false;
     }
@@ -102,9 +108,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [3] = LAYOUT_universal(
-      DT_PRNT      , DT_DOWN      , DT_UP        , _______      , EMAIL        ,                               _______      , _______      , _______      , _______      , _______      ,
+      DT_PRNT      , DT_DOWN      , DT_UP        , THUMBSUP     , EMAIL        ,                               _______      , _______      , _______      , _______      , _______      ,
       KC_MUTE      , KC_VOLD      , KC_VOLU      , SCRN_SHT     , NAME         ,                               _______      , KC_MS_BTN4   , KC_MS_BTN5   , _______      , _______      ,
-      _______      , KC_BRID      , KC_BRIU      , WIN_SEC      , REZE         ,                               _______      , _______      , _______      , _______      , _______      ,
+      _______      , KC_BRID      , KC_BRIU      , WIN_SEC      , BUNNY        ,                               _______      , _______      , _______      , _______      , _______      ,
       _______      , _______      , _______      , _______      , _______      , KC_LSFT      , SPC_RCTL     , _______      , _______      , _______      , _______      , _______
   ),
 
