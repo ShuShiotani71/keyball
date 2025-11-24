@@ -105,8 +105,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [2] = LAYOUT_universal(
-      _______      , _______      , _______      , _______      , _______      ,                               _______      , _______      , KC_DEL       , CH_LANG      , _______      ,
-      KC_0         , KC_1         , KC_2         , KC_3         , KC_4         ,                               KC_5         , KC_6         , KC_7         , KC_8         , KC_9         ,
+      _______      , _______      , _______      , _______      , _______      ,                               _______      , _______      , _______      , _______      , _______      ,
+      KC_1         , KC_2         , KC_3         , KC_4         , KC_5         ,                               KC_6         , KC_7         , KC_8         , KC_9         , KC_0         ,
       _______      , _______      , _______      , _______      , _______      ,                               _______      , _______      , _______      , _______      , _______      ,
       _______      , _______      , _______      , _______      , _______      , _______      , SPC_RCTL     , KC_RSFT      , _______      , _______      , _______      , _______
   ),
@@ -147,20 +147,23 @@ enum combos{
   BTN2,
   TAB,
   ENTER,
-  ESC,
+  CHANGE_LANG,
+  DELETE,
 };
 const uint16_t PROGMEM btn1[] = {MT(MOD_RGUI, KC_K), LT(3, KC_L), COMBO_END};
 const uint16_t PROGMEM btn2[] = {KC_COMM, KC_DOT, COMBO_END};
 const uint16_t PROGMEM tab[] = {KC_I, KC_O, COMBO_END};
 const uint16_t PROGMEM enter[] = {KC_W, KC_E, COMBO_END};
-const uint16_t PROGMEM esc[] = {KC_S, D_LGUI, COMBO_END};
+const uint16_t PROGMEM change_lang[] = {KC_S, D_LGUI, COMBO_END};
+const uint16_t PROGMEM delete[] = {KC_X, KC_C, COMBO_END};
 
 combo_t key_combos[] = {
   [BTN1] = COMBO(btn1, KC_BTN1),
   [BTN2] = COMBO(btn2, KC_BTN2),
   [TAB] = COMBO(tab, KC_TAB),
   [ENTER] = COMBO(enter, KC_ENT),
-  [ESC] = COMBO(esc, KC_ESC),
+  [CHANGE_LANG] = COMBO(change_lang, CH_LANG),
+  [DELETE] = COMBO(delete, KC_DEL),
 };
 #endif
 
