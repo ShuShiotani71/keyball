@@ -22,14 +22,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "ascii_arts/ascii_arts.h"
 
 
-// const key_override_t comm_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_COMM, KC_TILD);
-// const key_override_t dot_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_DOT, KC_HASH);
+const key_override_t comm_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_COMM, KC_QUES);
+const key_override_t dot_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_DOT, KC_EXLM);
+const key_override_t dqt_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_DQT, KC_QUOT);
 
-// const key_override_t **key_overrides = (const key_override_t *[]){
-	// &comm_key_override,
-	// &dot_key_override,
-	// NULL
-// };
+const key_override_t **key_overrides = (const key_override_t *[]){
+    &comm_key_override,
+    &dot_key_override,
+    &dqt_key_override,
+    NULL
+};
 
 
 enum custom_keycodes {
@@ -73,7 +75,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #define L_LT3 LT(3, KC_L)
 
 #define SPC_RCTL MT(MOD_RCTL, KC_SPC)
-#define BSPC_LT2 LT(2, KC_BSPC)
 
 #define SCRN_SHT LSFT(LGUI(KC_S))
 #define WIN_SEC LCTL(LALT(KC_DEL))
@@ -90,29 +91,29 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_universal(
       KC_Q         , KC_W         , KC_E         , KC_R         , KC_T         ,                               KC_Y         , KC_U         , KC_I         , KC_O         , KC_P         ,
       KC_A         , KC_S         , D_LGUI       , F_LALT       , KC_G         ,                               KC_H         , J_RALT       , K_RGUI       , L_LT3        , KC_BSPC      ,
-      KC_Z         , KC_X         , KC_C         , KC_V         , KC_B         ,                               KC_N         , KC_M         , KC_COMM      , KC_DOT       , KC_SLSH       ,
-      _______      , _______      , _______      , _______      , KC_LSFT      , BSPC_LT2    , SPC_RCTL     , MO(1)        , _______      , _______      , _______      , _______
+      KC_Z         , KC_X         , KC_C         , KC_V         , KC_B         ,                               KC_N         , KC_M         , KC_COMM      , KC_DOT       , KC_DQT      ,
+      _______      , _______      , _______      , _______      , MO(1)        , MO(2)        , SPC_RCTL     , KC_RSFT      , _______      , _______      , _______      , _______
   ),
 
   [1] = LAYOUT_universal(
-      KC_GRV       , KC_PERC      , KC_CIRC      , KC_DLR       , KC_HASH      ,                               KC_AT        , KC_QUOT      , KC_LBRC      , KC_RBRC      , KC_SCLN      ,
-      KC_EXLM      , KC_DQT       , KC_MINS      , KC_UNDS      , KC_PIPE      ,                               KC_LEFT      , KC_DOWN      , KC_UP        , KC_RGHT      , KC_COLN      ,
-      KC_ASTR      , KC_LPRN      , KC_RPRN      , KC_AMPR      , KC_BSLS      ,                               KC_PLUS      , KC_EQL       , KC_LCBR      , KC_RCBR      , KC_TILD      ,
-      _______      , _______      , _______      , _______      , KC_LSFT      , BSPC_LT2    , _______      , _______      , _______      , _______      , _______      , _______
+      KC_CIRC      , KC_LBRC      , KC_RBRC      , KC_DLR       , KC_GRV       ,                               KC_PERC      , KC_AMPR      , KC_HASH      , KC_ASTR      , KC_SCLN      ,
+      KC_MINS      , KC_LPRN      , KC_RPRN      , KC_UNDS      , KC_PIPE      ,                               KC_LEFT      , KC_DOWN      , KC_UP        , KC_RGHT      , KC_COLN      ,
+      KC_LABK      , KC_LCBR      , KC_RCBR      , KC_RABK      , KC_BSLS      ,                               KC_AT        , KC_EQL       , KC_PLUS      , KC_TILD      , KC_SLSH      ,
+      _______      , _______      , _______      , _______      , _______      , _______      , SPC_RCTL     , KC_RSFT      , _______      , _______      , _______      , _______
   ),
 
   [2] = LAYOUT_universal(
       _______      , _______      , _______      , _______      , _______      ,                               _______      , _______      , KC_DEL       , CH_LANG      , _______      ,
       KC_0         , KC_1         , KC_2         , KC_3         , KC_4         ,                               KC_5         , KC_6         , KC_7         , KC_8         , KC_9         ,
       _______      , _______      , _______      , _______      , _______      ,                               _______      , _______      , _______      , _______      , _______      ,
-      _______      , _______      , _______      , _______      , _______      , _______      , _______      , _______      , _______      , _______      , _______      , _______
+      _______      , _______      , _______      , _______      , _______      , _______      , SPC_RCTL     , KC_RSFT      , _______      , _______      , _______      , _______
   ),
 
   [3] = LAYOUT_universal(
       DT_PRNT      , DT_DOWN      , DT_UP        , THUMBSUP     , EMAIL        ,                               _______      , _______      , _______      , _______      , _______      ,
       KC_MUTE      , KC_VOLD      , KC_VOLU      , SCRN_SHT     , NAME         ,                               _______      , SCR_DOWN     , SCR_UP       , _______      , _______      ,
-      _______      , KC_BRID      , KC_BRIU      , WIN_SEC      , BUNNY        ,                               _______      , SCR_LEFT     , SCR_RGHT     , _______      , _______      ,
-      _______      , _______      , _______      , _______      , KC_LSFT      , BSPC_LT2    , SPC_RCTL     , MO(1)        , _______      , _______      , _______      , _______
+      _______      , KC_BRID      , KC_BRIU      , WIN_SEC      , BUNNY        ,                               _______      , KC_BTN4      , KC_BTN5      , _______      , _______      ,
+      _______      , _______      , _______      , _______      , MO(1)      , MO(2)          , SPC_RCTL     , KC_RSFT      , _______      , _______      , _______      , _______
   ),
 
 
