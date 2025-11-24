@@ -25,11 +25,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 const key_override_t comm_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_COMM, KC_QUES);
 const key_override_t dot_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_DOT, KC_EXLM);
 const key_override_t dqt_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_DQT, KC_QUOT);
+const key_override_t bspc_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_ESC);
 
 const key_override_t **key_overrides = (const key_override_t *[]){
     &comm_key_override,
     &dot_key_override,
     &dqt_key_override,
+    &bspc_key_override,
     NULL
 };
 
