@@ -149,7 +149,7 @@ const uint16_t PROGMEM btn1[] = {MT(MOD_RGUI, KC_K), LT(3, KC_L), COMBO_END};
 const uint16_t PROGMEM btn2[] = {KC_COMM, KC_DOT, COMBO_END};
 const uint16_t PROGMEM tab[] = {KC_I, KC_O, COMBO_END};
 const uint16_t PROGMEM enter[] = {KC_W, KC_E, COMBO_END};
-const uint16_t PROGMEM esc[] = {KC_S, KC_D, COMBO_END};
+const uint16_t PROGMEM esc[] = {KC_S, D_LGUI, COMBO_END};
 
 combo_t key_combos[] = {
   [BTN1] = COMBO(btn1, KC_BTN1),
