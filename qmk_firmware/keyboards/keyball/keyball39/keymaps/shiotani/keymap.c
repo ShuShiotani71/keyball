@@ -22,9 +22,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "ascii_arts/ascii_arts.h"
 
 
-const key_override_t comm_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_COMM, KC_QUES);
-const key_override_t dot_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_DOT, KC_EXLM);
-const key_override_t dqt_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_DQT, KC_QUOT);
+const key_override_t comm_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_COMM, KC_BSLS);
+const key_override_t dot_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_DOT, KC_GRV);
+const key_override_t dqt_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_DQT, KC_AT);
 const key_override_t bspc_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_ESC);
 
 const key_override_t **key_overrides = (const key_override_t *[]){
@@ -98,9 +98,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [1] = LAYOUT_universal(
-      KC_CIRC      , KC_LBRC      , KC_RBRC      , KC_DLR       , KC_GRV       ,                               KC_PERC      , KC_AMPR      , KC_HASH      , KC_ASTR      , KC_SCLN      ,
+      KC_CIRC      , KC_LBRC      , KC_RBRC      , KC_DLR       , KC_ASTR      ,                               KC_PERC      , KC_QUES      , KC_EXLM      , KC_QUOT      , KC_SCLN      ,
       KC_MINS      , KC_LPRN      , KC_RPRN      , KC_UNDS      , KC_PIPE      ,                               KC_LEFT      , KC_DOWN      , KC_UP        , KC_RGHT      , KC_COLN      ,
-      KC_LABK      , KC_LCBR      , KC_RCBR      , KC_RABK      , KC_BSLS      ,                               KC_AT        , KC_EQL       , KC_PLUS      , KC_TILD      , KC_SLSH      ,
+      KC_LABK      , KC_LCBR      , KC_RCBR      , KC_RABK      , KC_AMPR      ,                               KC_HASH      , KC_EQL       , KC_PLUS      , KC_TILD      , KC_SLSH      ,
       _______      , _______      , _______      , _______      , _______      , _______      , SPC_RCTL     , KC_RSFT      , _______      , _______      , _______      , _______
   ),
 
