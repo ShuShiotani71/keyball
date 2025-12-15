@@ -249,7 +249,7 @@ combo_t key_combos[] = {
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case MT(MOD_RCTL, KC_SPC):
-            return g_tapping_term - 50; // g_tapping_term used instead of TAPPING_TERM since dynamic_tapping_term enabled
+            return g_tapping_term - 100; // g_tapping_term used instead of TAPPING_TERM since dynamic_tapping_term enabled
         default:
             return g_tapping_term;
     }
