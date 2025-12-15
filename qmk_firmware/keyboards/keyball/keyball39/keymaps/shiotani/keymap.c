@@ -41,7 +41,41 @@ enum custom_keycodes {
     NAME,
     BUNNY,
     THUMBSUP,
+    ALT_TAB,
+    ALT_SFT_TAB,
+    CTL_TAB,
+    CTL_SFT_TAB,
 };
+
+bool is_alt_tab_active = false;
+bool is_alt_sft_tab_active = false;
+bool is_ctl_tab_active = false;
+bool is_ctl_sft_tab_active = false;
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+    // Auto enable scroll mode when the highest layer is 3
+    keyball_set_scroll_mode(get_highest_layer(state) == 3);
+
+    if (is_alt_tab_active) {
+        unregister_code(KC_LALT);
+        is_alt_tab_active = false;
+    }
+    if (is_alt_sft_tab_active) {
+        unregister_code(KC_LALT);
+        unregister_code(KC_LSFT);
+        is_alt_sft_tab_active = false;
+    }
+    if (is_ctl_tab_active) {
+        unregister_code(KC_LCTL);
+        is_ctl_tab_active = false;
+    }
+    if (is_ctl_sft_tab_active) {
+        unregister_code(KC_LCTL);
+        unregister_code(KC_LSFT);
+        is_ctl_sft_tab_active = false;
+    }
+    return state;
+}
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
@@ -65,7 +99,56 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             send_string(THUMBSUP_ASCII);
         }
         return false;
+
+  // custom alt-tab, ctl-tab but with layer key instead
+    case ALT_TAB:
+      if (record->event.pressed) {
+        if (!is_alt_tab_active) {
+          is_alt_tab_active = true;
+          register_code(KC_LALT);
+        }
+        register_code(KC_TAB);
+      } else {
+        unregister_code(KC_TAB);
+      }
+      return false;
+    case ALT_SFT_TAB:
+      if (record->event.pressed) {
+        if (!is_alt_sft_tab_active) {
+          is_alt_sft_tab_active = true;
+          register_code(KC_LALT);
+          register_code(KC_LSFT);
+        }
+        register_code(KC_TAB);
+      } else {
+        unregister_code(KC_TAB);
+      }
+      return false;
+    case CTL_TAB:
+      if (record->event.pressed) {
+        if (!is_ctl_tab_active) {
+          is_ctl_tab_active = true;
+          register_code(KC_LCTL);
+        }
+        register_code(KC_TAB);
+      } else {
+        unregister_code(KC_TAB);
+      }
+      return false;
+    case CTL_SFT_TAB:
+      if (record->event.pressed) {
+        if (!is_ctl_sft_tab_active) {
+          is_ctl_sft_tab_active = true;
+          register_code(KC_LCTL);
+          register_code(KC_LSFT);
+        }
+        register_code(KC_TAB);
+      } else {
+        unregister_code(KC_TAB);
+      }
+      return false;
     }
+
     return true;
 };
 
@@ -105,7 +188,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [2] = LAYOUT_universal(
-      _______      , _______      , _______      , _______      , _______      ,                               _______      , _______      , _______      , _______      , _______      ,
+      _______      , _______      , _______      , _______      , _______      ,                               ALT_SFT_TAB  , CTL_SFT_TAB  , CTL_TAB      , ALT_TAB      , _______      ,
       KC_1         , KC_2         , KC_3         , KC_4         , KC_5         ,                               KC_6         , KC_7         , KC_8         , KC_9         , KC_0         ,
       _______      , _______      , _______      , _______      , _______      ,                               _______      , _______      , _______      , _______      , _______      ,
       _______      , _______      , _______      , _______      , _______      , _______      , SPC_RCTL     , KC_RSFT      , _______      , _______      , _______      , _______
@@ -122,11 +205,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 // clang-format on
 
-layer_state_t layer_state_set_user(layer_state_t state) {
-    // Auto enable scroll mode when the highest layer is 3
-    keyball_set_scroll_mode(get_highest_layer(state) == 3);
-    return state;
-}
 
 #ifdef OLED_ENABLE
 
@@ -176,3 +254,5 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return g_tapping_term;
     }
 }
+
+
