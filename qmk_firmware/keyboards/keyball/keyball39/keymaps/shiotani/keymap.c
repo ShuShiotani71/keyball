@@ -150,54 +150,50 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     // custom keys for toggling lang
     case TOGGLE_JP:
+      if (record->event.pressed) {
         switch (detected_host_os()) {
        	case OS_MACOS:
 	    // JIS_HENKAN
-	    register_code(KC_INT4);
-	    unregister_code(KC_INT4);
+	    tap_code(KC_INT4);
        	    break;
        	case OS_IOS:
        	case OS_WINDOWS:
 	    // HANGUL/ENG
-	    register_code(KC_LNG1);
-	    unregister_code(KC_LNG1);
+	    tap_code(KC_LNG1);
        	    break;
        	case OS_LINUX:
 	    // JIS_HENKAN
-	    register_code(KC_INT4);
-	    unregister_code(KC_INT4);
+	    tap_code(KC_INT4);
        	    break;
        	default:
 	    // HANGUL/ENG
-	    register_code(KC_LNG1);
-	    unregister_code(KC_LNG1);
+	    tap_code(KC_LNG1);
        	    break;
         }
+      }
         return false;
     case TOGGLE_EN:
+      if (record->event.pressed) {
         switch (detected_host_os()) {
        	case OS_MACOS:
 	    // JIS_MUHENKAN
-	    register_code(KC_INT5);
-	    unregister_code(KC_INT5);
+	    tap_code(KC_INT5);
        	    break;
        	case OS_IOS:
        	case OS_WINDOWS:
 	    // HANJA
-	    register_code(KC_LNG2);
-	    unregister_code(KC_LNG2);
+	    tap_code(KC_LNG2);
        	    break;
        	case OS_LINUX:
 	    // JIS_MUHENKAN
-	    register_code(KC_INT5);
-	    unregister_code(KC_INT5);
+	    tap_code(KC_INT5);
        	    break;
        	default:
 	    // HANJA
-	    register_code(KC_LNG2);
-	    unregister_code(KC_LNG2);
+	    tap_code(KC_LNG2);
        	    break;
         }
+      }
         return false;
     }
 
