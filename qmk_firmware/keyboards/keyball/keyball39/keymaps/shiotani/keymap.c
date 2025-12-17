@@ -78,123 +78,123 @@ enum custom_keycodes {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-    // custom strings
-    case EMAIL:
-        if (record->event.pressed) {
-            SEND_STRING("shu.shiotani70@gmail.com");
-        }
-        return false;
-    case NAME:
-        if (record->event.pressed) {
-            SEND_STRING("Shu Shiotani");
-        }
-        return false;
-    case BUNNY:
-        if (record->event.pressed) {
-            send_string(BUNNY_ASCII);
-        }
-        return false;
-    case THUMBSUP:
-        if (record->event.pressed) {
-            send_string(THUMBSUP_ASCII);
-        }
-        return false;
+        // custom strings
+        case EMAIL:
+            if (record->event.pressed) {
+                SEND_STRING("shu.shiotani70@gmail.com");
+            }
+            return false;
+        case NAME:
+            if (record->event.pressed) {
+                SEND_STRING("Shu Shiotani");
+            }
+            return false;
+        case BUNNY:
+            if (record->event.pressed) {
+                send_string(BUNNY_ASCII);
+            }
+            return false;
+        case THUMBSUP:
+            if (record->event.pressed) {
+                send_string(THUMBSUP_ASCII);
+            }
+            return false;
 
-  // custom alt-tab, ctl-tab but with layer key instead
-    case ALT_TAB:
-      if (record->event.pressed) {
-        if (!is_alt_tab_active) {
-          is_alt_tab_active = true;
-          register_code(KC_LALT);
-        }
-        register_code(KC_TAB);
-      } else {
-        unregister_code(KC_TAB);
-      }
-      return false;
-    case ALT_SFT_TAB:
-      if (record->event.pressed) {
-        if (!is_alt_sft_tab_active) {
-          is_alt_sft_tab_active = true;
-          register_code(KC_LALT);
-          register_code(KC_LSFT);
-        }
-        register_code(KC_TAB);
-      } else {
-        unregister_code(KC_TAB);
-      }
-      return false;
-    case CTL_TAB:
-      if (record->event.pressed) {
-        if (!is_ctl_tab_active) {
-          is_ctl_tab_active = true;
-          register_code(KC_LCTL);
-        }
-        register_code(KC_TAB);
-      } else {
-        unregister_code(KC_TAB);
-      }
-      return false;
-    case CTL_SFT_TAB:
-      if (record->event.pressed) {
-        if (!is_ctl_sft_tab_active) {
-          is_ctl_sft_tab_active = true;
-          register_code(KC_LCTL);
-          register_code(KC_LSFT);
-        }
-        register_code(KC_TAB);
-      } else {
-        unregister_code(KC_TAB);
-      }
-      return false;
+        // custom alt-tab, ctl-tab but with layer key instead
+        case ALT_TAB:
+            if (record->event.pressed) {
+                if (!is_alt_tab_active) {
+                    is_alt_tab_active = true;
+                    register_code(KC_LALT);
+                }
+                register_code(KC_TAB);
+            } else {
+                unregister_code(KC_TAB);
+            }
+            return false;
+        case ALT_SFT_TAB:
+            if (record->event.pressed) {
+                if (!is_alt_sft_tab_active) {
+                    is_alt_sft_tab_active = true;
+                    register_code(KC_LALT);
+                    register_code(KC_LSFT);
+                }
+                register_code(KC_TAB);
+            } else {
+                unregister_code(KC_TAB);
+            }
+            return false;
+        case CTL_TAB:
+            if (record->event.pressed) {
+                if (!is_ctl_tab_active) {
+                    is_ctl_tab_active = true;
+                    register_code(KC_LCTL);
+                }
+                register_code(KC_TAB);
+            } else {
+                unregister_code(KC_TAB);
+            }
+            return false;
+        case CTL_SFT_TAB:
+            if (record->event.pressed) {
+                if (!is_ctl_sft_tab_active) {
+                    is_ctl_sft_tab_active = true;
+                    register_code(KC_LCTL);
+                    register_code(KC_LSFT);
+                }
+                register_code(KC_TAB);
+            } else {
+                unregister_code(KC_TAB);
+            }
+            return false;
 
-    // custom keys for toggling lang
-    case TOGGLE_JP:
-      if (record->event.pressed) {
-        switch (detected_host_os()) {
-       	case OS_MACOS:
-	    // JIS_HENKAN
-	    tap_code(KC_INT4);
-       	    break;
-       	case OS_IOS:
-       	case OS_WINDOWS:
-	    // HANGUL/ENG
-	    tap_code(KC_LNG1);
-       	    break;
-       	case OS_LINUX:
-	    // JIS_HENKAN
-	    tap_code(KC_INT4);
-       	    break;
-       	default:
-	    // HANGUL/ENG
-	    tap_code(KC_LNG1);
-       	    break;
-        }
-      }
-        return false;
-    case TOGGLE_EN:
-      if (record->event.pressed) {
-        switch (detected_host_os()) {
-       	case OS_MACOS:
-	    // JIS_MUHENKAN
-	    tap_code(KC_INT5);
-       	    break;
-       	case OS_IOS:
-       	case OS_WINDOWS:
-	    // HANJA
-	    tap_code(KC_LNG2);
-       	    break;
-       	case OS_LINUX:
-	    // JIS_MUHENKAN
-	    tap_code(KC_INT5);
-       	    break;
-       	default:
-	    // HANJA
-	    tap_code(KC_LNG2);
-       	    break;
-        }
-      }
-        return false;
+        // custom keys for toggling lang
+        case TOGGLE_JP:
+            if (record->event.pressed) {
+                switch (detected_host_os()) {
+                  case OS_MACOS:
+                      // JIS_HENKAN
+                      tap_code(KC_INT4);
+                      break;
+                  case OS_IOS:
+                  case OS_WINDOWS:
+                      // HANGUL/ENG
+                      tap_code(KC_LNG1);
+                      break;
+                  case OS_LINUX:
+                      // JIS_HENKAN
+                      tap_code(KC_INT4);
+                      break;
+                  default:
+                      // HANGUL/ENG
+                      tap_code(KC_LNG1);
+                      break;
+                }
+            }
+            return false;
+        case TOGGLE_EN:
+            if (record->event.pressed) {
+                switch (detected_host_os()) {
+                    case OS_MACOS:
+                        // JIS_MUHENKAN
+                        tap_code(KC_INT5);
+                        break;
+                    case OS_IOS:
+                    case OS_WINDOWS:
+                        // HANJA
+                        tap_code(KC_LNG2);
+                        break;
+                    case OS_LINUX:
+                        // JIS_MUHENKAN
+                        tap_code(KC_INT5);
+                        break;
+                    default:
+                        // HANJA
+                        tap_code(KC_LNG2);
+                        break;
+                  }
+              }
+              return false;
     }
 
     return true;
