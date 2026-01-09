@@ -119,8 +119,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                     register_code(KC_LALT);
                     register_code(KC_LSFT);
                 }
+		// order is super important here; must register shift and then tab
+                register_code(KC_LSFT);
                 register_code(KC_TAB);
             } else {
+                unregister_code(KC_LSFT);
                 unregister_code(KC_TAB);
             }
             return false;
@@ -142,8 +145,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                     register_code(KC_LCTL);
                     register_code(KC_LSFT);
                 }
+		// order is super important here; must register shift and then tab
+                register_code(KC_LSFT);
                 register_code(KC_TAB);
             } else {
+                unregister_code(KC_LSFT);
                 unregister_code(KC_TAB);
             }
             return false;
