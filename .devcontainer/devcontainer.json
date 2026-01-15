@@ -1,0 +1,28 @@
+{
+  "name": "Keyball",
+
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+
+  "workspaceFolder": "/root/qmk",
+
+  // necessary for accessing host usb ports
+  "privileged": true,
+
+  "mounts": [
+    // mount project repo
+    "source=${localWorkspaceFolder}/qmk_firmware/keyboards/keyball,target=/root/qmk/keyboards/keyball,type=bind",
+    // necessary for accessing host usb ports
+    "source=/dev,target=/dev,type=bind"
+  ],
+
+  "containerEnv": {
+    "KEYBALL_PATH": "keyball/keyball39",
+    "KEYMAP": "shiotani"
+  },
+
+  // executed inside $workspaceFolder
+  "postCreateCommand": "make SKIP_GIT=yes ${KEYBALL_PATH}:${KEYMAP}"
+}
+
