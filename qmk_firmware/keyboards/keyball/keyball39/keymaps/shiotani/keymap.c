@@ -25,11 +25,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 const key_override_t comm_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_COMM, KC_BSLS);
 const key_override_t dot_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_DOT, KC_GRV);
 const key_override_t bspc_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_ESC);
+const key_override_t pipe_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_PIPE, KC_AT);
 
 const key_override_t **key_overrides = (const key_override_t *[]){
     &comm_key_override,
     &dot_key_override,
     &bspc_key_override,
+    &pipe_key_override,
     NULL
 };
 
@@ -231,27 +233,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_universal(
       KC_Q         , KC_W         , KC_E         , KC_R         , KC_T         ,                               KC_Y         , KC_U         , KC_I         , KC_O         , KC_P         ,
       KC_A         , S_LT4        , D_LGUI       , F_LALT       , KC_G         ,                               KC_H         , J_RALT       , K_RGUI       , L_LT3        , KC_BSPC      ,
-      KC_Z         , KC_X         , KC_C         , KC_V         , KC_B         ,                               KC_N         , KC_M         , KC_COMM      , KC_DOT       , _______      ,
+      KC_Z         , KC_X         , KC_C         , KC_V         , KC_B         ,                               KC_N         , KC_M         , KC_COMM      , KC_DOT       , KC_PIPE      ,
       _______      , _______      , _______      , _______      , MO(1)        , MO(2)        , SPC_RCTL     , KC_RSFT      , _______      , _______      , _______      , _______
   ),
 
   [1] = LAYOUT_universal(
-      KC_CIRC      , KC_LBRC      , KC_RBRC      , KC_DLR       , KC_ASTR      ,                               KC_HASH      , KC_EXLM      , KC_QUES      , KC_SCLN      , _______      ,
-      KC_MINS      , KC_LPRN      , KC_RPRN      , KC_UNDS      , KC_PIPE      ,                               KC_AT        , KC_DQT       , KC_QUOT      , KC_COLN      , KC_BSPC      ,
-      KC_LABK      , KC_LCBR      , KC_RCBR      , KC_RABK      , KC_AMPR      ,                               KC_PERC      , KC_EQL       , KC_PLUS      , KC_TILD      , KC_SLSH      ,
+      KC_CIRC      , KC_LBRC      , KC_RBRC      , KC_DLR       , KC_PERC      ,                               ALT_SFT_TAB  , ALT_TAB      , CTL_SFT_TAB  , CTL_TAB      , KC_SCLN      ,
+      KC_MINS      , KC_LPRN      , KC_RPRN      , KC_UNDS      , KC_ASTR      ,                               KC_HASH      , KC_DQT       , KC_QUOT      , KC_EQL       , KC_COLN      ,
+      KC_LABK      , KC_LCBR      , KC_RCBR      , KC_RABK      , KC_AMPR      ,                               KC_QUES      , KC_EXLM      , KC_PLUS      , KC_SLSH      , KC_TILD      ,
       _______      , _______      , _______      , _______      , _______      , _______      , SPC_RCTL     , KC_RSFT      , _______      , _______      , _______      , _______
   ),
 
   [2] = LAYOUT_universal(
-      _______      , KC_1         , KC_2         , KC_3         , TOGGLE_JP    ,                               ALT_SFT_TAB  , CTL_SFT_TAB  , CTL_TAB      , ALT_TAB      , _______      ,
-      KC_0         , KC_4         , KC_5         , KC_6         , TOGGLE_EN    ,                               KC_LEFT      , KC_DOWN      , KC_UP        , KC_RIGHT     , KC_BSPC      ,
-      _______      , KC_7         , KC_8         , KC_9         , CH_LANG      ,                               SCR_LEFT     , SCR_DOWN     , SCR_UP       , SCR_RGHT     , _______      ,
+      _______      , KC_1         , KC_2         , KC_3         , _______      ,                               _______      , CH_LANG      , TOGGLE_JP    , TOGGLE_EN    , _______      ,
+      KC_0         , KC_4         , KC_5         , KC_6         , _______      ,                               KC_LEFT      , KC_DOWN      , KC_UP        , KC_RIGHT     , KC_BSPC      ,
+      _______      , KC_7         , KC_8         , KC_9         , _______      ,                               SCR_LEFT     , SCR_DOWN     , SCR_UP       , SCR_RGHT     , _______      ,
       _______      , _______      , _______      , _______      , _______      , _______      , SPC_RCTL     , KC_RSFT      , _______      , _______      , _______      , _______
   ),
 
   [3] = LAYOUT_universal(
       _______      , _______      , _______      , _______      , _______      ,                               _______      , _______      , _______      , _______      , _______      ,
-      KC_MUTE      , KC_VOLD      , KC_VOLU      , SCRN_SHT     , _______      ,                               _______      , KC_BTN4      , KC_BTN5      , _______      , _______      ,
+      KC_MUTE      , KC_VOLD      , KC_VOLU      , SCRN_SHT     , _______      ,                               _______      , _______      , _______      , _______      , _______      ,
       _______      , KC_BRID      , KC_BRIU      , WIN_SEC      , _______      ,                               _______      , _______      , _______      , _______      , _______      ,
       _______      , _______      , _______      , _______      , MO(1)        , MO(2)        , SPC_RCTL     , KC_RSFT      , _______      , _______      , _______      , _______
   ),
@@ -285,12 +287,16 @@ void oledkit_render_info_user(void) {
 enum combos{
   BTN1,
   BTN2,
+  BTN4,
+  BTN5,
   TAB,
   ENTER,
   DELETE,
 };
-const uint16_t PROGMEM btn1[] = {MT(MOD_RGUI, KC_K), LT(3, KC_L), COMBO_END};
+const uint16_t PROGMEM btn1[] = {K_RGUI, L_LT3, COMBO_END};
 const uint16_t PROGMEM btn2[] = {KC_COMM, KC_DOT, COMBO_END};
+const uint16_t PROGMEM btn4[] = {J_RALT, K_RGUI, COMBO_END};
+const uint16_t PROGMEM btn5[] = {KC_M, KC_COMM, COMBO_END};
 const uint16_t PROGMEM tab[] = {KC_W, KC_E, COMBO_END};
 const uint16_t PROGMEM enter[] = {KC_I, KC_O, COMBO_END};
 const uint16_t PROGMEM delete[] = {KC_X, KC_C, COMBO_END};
@@ -298,6 +304,8 @@ const uint16_t PROGMEM delete[] = {KC_X, KC_C, COMBO_END};
 combo_t key_combos[] = {
   [BTN1] = COMBO(btn1, KC_BTN1),
   [BTN2] = COMBO(btn2, KC_BTN2),
+  [BTN4] = COMBO(btn4, KC_BTN4),
+  [BTN5] = COMBO(btn5, KC_BTN5),
   [TAB] = COMBO(tab, KC_TAB),
   [ENTER] = COMBO(enter, KC_ENT),
   [DELETE] = COMBO(delete, KC_DEL),
