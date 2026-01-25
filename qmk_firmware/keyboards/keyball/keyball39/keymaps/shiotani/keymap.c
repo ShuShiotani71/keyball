@@ -214,7 +214,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #define L_LT3 LT(3, KC_L)
 #define S_LT4 LT(4, KC_S)
 
-#define SPC_RCTL MT(MOD_RCTL, KC_SPC)
+#define TAB_RCTL MT(MOD_RCTL, KC_TAB)
+#define SPC_RSFT MT(MOD_RSFT, KC_SPC)
+#define ENT_L1 LT(1, KC_ENT)
+#define ESC_L2 LT(2, KC_ESC) // might do backspace
 
 #define SCRN_SHT LSFT(LGUI(KC_S))
 #define WIN_SEC LCTL(LALT(KC_DEL))
@@ -232,35 +235,35 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_Q         , KC_W         , KC_E         , KC_R         , KC_T         ,                               KC_Y         , KC_U         , KC_I         , KC_O         , KC_P         ,
       KC_A         , S_LT4        , D_LGUI       , F_LALT       , KC_G         ,                               KC_H         , J_RALT       , K_RGUI       , L_LT3        , KC_BSPC      ,
       KC_Z         , KC_X         , KC_C         , KC_V         , KC_B         ,                               KC_N         , KC_M         , KC_COMM      , KC_DOT       , TOGGLE_EN    ,
-      _______      , _______      , _______      , _______      , MO(1)        , MO(2)        , SPC_RCTL     , KC_RSFT      , _______      , _______      , _______      , _______
+      _______      , _______      , _______      , _______      , ENT_L1       , ESC_L2       , TAB_RCTL     , SPC_RSFT     , _______      , _______      , _______      , _______
   ),
 
   [1] = LAYOUT_universal(
-      KC_CIRC      , KC_LBRC      , KC_RBRC      , KC_DLR       , KC_PERC      ,                               KC_AT        , KC_PIPE      , KC_TAB       , KC_ENT       , KC_SCLN      ,
+      KC_CIRC      , KC_LBRC      , KC_RBRC      , KC_DLR       , KC_PERC      ,                               KC_AT        , KC_PIPE      , KC_BSLS      , KC_GRV       , KC_SCLN      ,
       KC_MINS      , KC_LPRN      , KC_RPRN      , KC_UNDS      , KC_ASTR      ,                               KC_HASH      , KC_DQT       , KC_QUOT      , KC_EQL       , KC_COLN      ,
       KC_LABK      , KC_LCBR      , KC_RCBR      , KC_RABK      , KC_AMPR      ,                               KC_QUES      , KC_EXLM      , KC_PLUS      , KC_SLSH      , KC_TILD      ,
-      _______      , _______      , _______      , _______      , _______      , _______      , SPC_RCTL     , KC_RSFT      , _______      , _______      , _______      , _______
+      _______      , _______      , _______      , _______      , ENT_L1       , ESC_L2       , TAB_RCTL     , SPC_RSFT     , _______      , _______      , _______      , _______
   ),
 
   [2] = LAYOUT_universal(
       _______      , KC_1         , KC_2         , KC_3         , _______      ,                               ALT_SFT_TAB  , ALT_TAB      , CTL_SFT_TAB  , CTL_TAB      , KC_DEL       ,
-      KC_0         , KC_4         , KC_5         , KC_6         , _______      ,                               KC_LEFT      , KC_DOWN      , KC_UP        , KC_RIGHT     , KC_BSPC      ,
+      KC_0         , KC_4         , KC_5         , KC_6         , CH_LANG      ,                               KC_LEFT      , KC_DOWN      , KC_UP        , KC_RIGHT     , KC_BSPC      ,
       _______      , KC_7         , KC_8         , KC_9         , _______      ,                               SCR_LEFT     , SCR_DOWN     , SCR_UP       , SCR_RGHT     , TOGGLE_JP    ,
-      _______      , _______      , _______      , _______      , _______      , _______      , SPC_RCTL     , KC_RSFT      , _______      , _______      , _______      , _______
+      _______      , _______      , _______      , _______      , ENT_L1       , ESC_L2       , TAB_RCTL     , SPC_RSFT     , _______      , _______      , _______      , _______
   ),
 
   [3] = LAYOUT_universal(
-      _______      , _______      , _______      , _______      , _______      ,                               _______      , _______      , _______      , _______      , _______      ,
+      _______      , DT_DOWN      , DT_UP        , DT_PRNT      , _______      ,                               _______      , _______      , _______      , _______      , _______      ,
       KC_MUTE      , KC_VOLD      , KC_VOLU      , SCRN_SHT     , _______      ,                               _______      , _______      , _______      , _______      , _______      ,
       _______      , KC_BRID      , KC_BRIU      , WIN_SEC      , _______      ,                               _______      , _______      , _______      , _______      , _______      ,
-      _______      , _______      , _______      , _______      , MO(1)        , MO(2)        , SPC_RCTL     , KC_RSFT      , _______      , _______      , _______      , _______
+      _______      , _______      , _______      , _______      , ENT_L1       , ESC_L2       , TAB_RCTL     , SPC_RSFT     , _______      , _______      , _______      , _______
   ),
 
   [4] = LAYOUT_universal(
       _______      , _______      , _______      , _______      , _______      ,                               _______      , BUNNY        , THUMBSUP     , _______      , _______      ,
       _______      , _______      , _______      , _______      , _______      ,                               _______      , EMAIL        , NAME         , _______      , _______      ,
       _______      , _______      , _______      , _______      , _______      ,                               _______      , _______      , _______      , _______      , _______      ,
-      _______      , _______      , _______      , _______      , MO(1)        , MO(2)        , SPC_RCTL     , KC_RSFT      , _______      , _______      , _______      , _______
+      _______      , _______      , _______      , _______      , ENT_L1       , ESC_L2       , TAB_RCTL     , SPC_RSFT     , _______      , _______      , _______      , _______
   ),
 
 
@@ -295,8 +298,8 @@ const uint16_t PROGMEM btn1[] = {K_RGUI, L_LT3, COMBO_END};
 const uint16_t PROGMEM btn2[] = {KC_COMM, KC_DOT, COMBO_END};
 const uint16_t PROGMEM btn4[] = {J_RALT, K_RGUI, COMBO_END};
 const uint16_t PROGMEM btn5[] = {KC_M, KC_COMM, COMBO_END};
-const uint16_t PROGMEM tab[] = {KC_W, KC_E, COMBO_END};
-const uint16_t PROGMEM enter[] = {KC_I, KC_O, COMBO_END};
+const uint16_t PROGMEM tab[] = {KC_E, KC_R, COMBO_END};
+const uint16_t PROGMEM enter[] = {KC_U, KC_I, COMBO_END};
 const uint16_t PROGMEM delete[] = {KC_X, KC_C, COMBO_END};
 
 combo_t key_combos[] = {
@@ -313,10 +316,16 @@ combo_t key_combos[] = {
 // per key tapping term
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case MT(MOD_RCTL, KC_SPC):
-            return TAPPING_TERM - 120;
+        case ENT_L1:
+            return g_tapping_term - 150;
+        case ESC_L2:
+            return g_tapping_term - 150;
+        case TAB_RCTL:
+            return g_tapping_term - 150;
+        case SPC_RSFT:
+            return g_tapping_term - 150;
         default:
-            return TAPPING_TERM;
+            return g_tapping_term;
     }
 }
 
