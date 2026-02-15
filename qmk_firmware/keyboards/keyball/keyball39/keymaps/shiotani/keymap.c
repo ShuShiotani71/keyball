@@ -239,16 +239,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [1] = LAYOUT_universal(
-      KC_CIRC      , KC_LBRC      , KC_RBRC      , KC_DLR       , KC_PERC      ,                               KC_AT        , KC_PIPE      , KC_BSLS      , KC_GRV       , KC_SCLN      ,
+      KC_GRV       , KC_LBRC      , KC_RBRC      , KC_BSLS      , KC_PERC      ,                               KC_QUES      , KC_EXLM      , KC_CIRC      , KC_DLR       , KC_SCLN      ,
       KC_MINS      , KC_LPRN      , KC_RPRN      , KC_UNDS      , KC_ASTR      ,                               KC_HASH      , KC_DQT       , KC_QUOT      , KC_EQL       , KC_COLN      ,
-      KC_LABK      , KC_LCBR      , KC_RCBR      , KC_RABK      , KC_AMPR      ,                               KC_QUES      , KC_EXLM      , KC_PLUS      , KC_SLSH      , KC_TILD      ,
+      KC_LABK      , KC_LCBR      , KC_RCBR      , KC_RABK      , KC_AMPR      ,                               KC_AT        , KC_PIPE      , KC_PLUS      , KC_SLSH      , KC_TILD      ,
       _______      , _______      , _______      , _______      , MO(1)        , ENT_L2       , SPC_RCTL     , KC_RSFT     , _______      , _______      , _______      , _______
   ),
 
   [2] = LAYOUT_universal(
-      _______      , KC_1         , KC_2         , KC_3         , _______      ,                               ALT_SFT_TAB  , ALT_TAB      , CTL_SFT_TAB  , CTL_TAB      , KC_DEL       ,
-      KC_0         , KC_4         , KC_5         , KC_6         , CH_LANG      ,                               KC_LEFT      , KC_DOWN      , KC_UP        , KC_RIGHT     , KC_BSPC      ,
-      _______      , KC_7         , KC_8         , KC_9         , _______      ,                               SCR_LEFT     , SCR_DOWN     , SCR_UP       , SCR_RGHT     , _______      ,
+      _______      , KC_1         , KC_2         , KC_3         , TOGGLE_JP    ,                               ALT_SFT_TAB  , ALT_TAB      , CTL_SFT_TAB  , CTL_TAB      , KC_DEL       ,
+      KC_0         , KC_4         , KC_5         , KC_6         , TOGGLE_EN    ,                               KC_LEFT      , KC_DOWN      , KC_UP        , KC_RIGHT     , KC_BSPC      ,
+      _______      , KC_7         , KC_8         , KC_9         , CH_LANG      ,                               SCR_LEFT     , SCR_DOWN     , SCR_UP       , SCR_RGHT     , _______      ,
       _______      , _______      , _______      , _______      , MO(1)        , ENT_L2       , SPC_RCTL     , KC_RSFT      , _______      , _______      , _______      , _______
   ),
 
@@ -290,26 +290,17 @@ enum combos{
   BTN2,
   BTN4,
   BTN5,
-  TAB,
-  EN,
-  JP,
 };
 const uint16_t PROGMEM btn1[] = {K_RGUI, L_LT3, COMBO_END};
 const uint16_t PROGMEM btn2[] = {KC_COMM, KC_DOT, COMBO_END};
 const uint16_t PROGMEM btn4[] = {J_RALT, K_RGUI, COMBO_END};
 const uint16_t PROGMEM btn5[] = {KC_M, KC_COMM, COMBO_END};
-const uint16_t PROGMEM tab[] = {KC_W, KC_E, COMBO_END};
-const uint16_t PROGMEM en[] = {S_LT4, D_LGUI, COMBO_END};
-const uint16_t PROGMEM jp[] = {KC_X, KC_C, COMBO_END};
 
 combo_t key_combos[] = {
   [BTN1] = COMBO(btn1, KC_BTN1),
   [BTN2] = COMBO(btn2, KC_BTN2),
   [BTN4] = COMBO(btn4, KC_BTN4),
   [BTN5] = COMBO(btn5, KC_BTN5),
-  [TAB] = COMBO(tab, KC_TAB),
-  [EN] = COMBO(en, TOGGLE_EN),
-  [JP] = COMBO(jp, TOGGLE_JP),
 };
 #endif
 
@@ -317,9 +308,9 @@ combo_t key_combos[] = {
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case ENT_L2:
-            return g_tapping_term - 150;
+            return g_tapping_term - 100;
         case SPC_RCTL:
-            return g_tapping_term - 150;
+            return g_tapping_term - 100;
         default:
             return g_tapping_term;
     }
