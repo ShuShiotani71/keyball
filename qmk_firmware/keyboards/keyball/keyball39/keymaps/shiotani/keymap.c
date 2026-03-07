@@ -290,17 +290,23 @@ enum combos{
   BTN2,
   BTN4,
   BTN5,
+  TAB,
+  ESC,
 };
 const uint16_t PROGMEM btn1[] = {K_RGUI, L_LT3, COMBO_END};
 const uint16_t PROGMEM btn2[] = {KC_COMM, KC_DOT, COMBO_END};
 const uint16_t PROGMEM btn4[] = {J_RALT, K_RGUI, COMBO_END};
 const uint16_t PROGMEM btn5[] = {KC_M, KC_COMM, COMBO_END};
+const uint16_t PROGMEM tab[] = {S_LT4, D_LGUI, COMBO_END};
+const uint16_t PROGMEM esc[] = {KC_W, KC_E, COMBO_END};
 
 combo_t key_combos[] = {
   [BTN1] = COMBO(btn1, KC_BTN1),
   [BTN2] = COMBO(btn2, KC_BTN2),
   [BTN4] = COMBO(btn4, KC_BTN4),
   [BTN5] = COMBO(btn5, KC_BTN5),
+  [TAB] = COMBO(tab, KC_TAB),
+  [ESC] = COMBO(esc, KC_ESC),
 };
 #endif
 
@@ -308,9 +314,9 @@ combo_t key_combos[] = {
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case ENT_L2:
-            return g_tapping_term - 100;
+            return 170;
         case SPC_RCTL:
-            return g_tapping_term - 100;
+            return 170;
         default:
             return g_tapping_term;
     }
