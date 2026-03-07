@@ -261,42 +261,40 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // keymap for default (VIA)
-  [0] = LAYOUT_universal(
-      KC_Q         , KC_W         , KC_E         , KC_R         , KC_T         ,                               KC_Y         , KC_U         , KC_I         , KC_O         , KC_P         ,
-      KC_A         , S_LT4        , D_LGUI       , F_LALT       , KC_G         ,                               KC_H         , J_RALT       , K_RGUI       , L_LT3        , KC_BSPC      ,
-      KC_Z         , KC_X         , KC_C         , KC_V         , KC_B         ,                               KC_N         , KC_M         , KC_COMM      , KC_DOT       , KC_TAB       ,
-      _______      , _______      , _______      , _______      , MO(1)        , ENT_L2       , SPC_RCTL     , KC_RSFT      , _______      , _______      , _______      , _______
-  ),
+    [0] = LAYOUT_universal(
+        KC_Q         , KC_W         , KC_E         , KC_R         , KC_T         ,                               KC_Y         , KC_U         , KC_I         , KC_O         , KC_P         ,
+        KC_A         , S_LT4        , D_LGUI       , F_LALT       , KC_G         ,                               KC_H         , J_RALT       , K_RGUI       , L_LT3        , KC_BSPC      ,
+        KC_Z         , KC_X         , KC_C         , KC_V         , KC_B         ,                               KC_N         , KC_M         , KC_COMM      , KC_DOT       , KC_TAB       ,
+        _______      , _______      , _______      , _______      , MO(1)        , ENT_L2       , SPC_RCTL     , KC_RSFT      , _______      , _______      , _______      , _______
+    ),
 
-  [1] = LAYOUT_universal(
-      KC_GRV       , KC_LBRC      , KC_RBRC      , KC_BSLS      , KC_PERC      ,                               KC_QUES      , KC_EXLM      , KC_CIRC      , KC_DLR       , KC_SCLN      ,
-      KC_MINS      , KC_LPRN      , KC_RPRN      , KC_UNDS      , KC_ASTR      ,                               KC_HASH      , KC_DQT       , KC_QUOT      , KC_EQL       , KC_COLN      ,
-      KC_LABK      , KC_LCBR      , KC_RCBR      , KC_RABK      , KC_AMPR      ,                               KC_AT        , KC_PIPE      , KC_PLUS      , KC_SLSH      , KC_TILD      ,
-      _______      , _______      , _______      , _______      , MO(1)        , ENT_L2       , SPC_RCTL     , KC_RSFT      , _______      , _______      , _______      , _______
-  ),
+    [1] = LAYOUT_universal(
+        KC_GRV       , KC_LBRC      , KC_RBRC      , KC_BSLS      , KC_PERC      ,                               KC_QUES      , KC_EXLM      , KC_CIRC      , KC_DLR       , KC_SCLN      ,
+        KC_MINS      , KC_LPRN      , KC_RPRN      , KC_UNDS      , KC_ASTR      ,                               KC_HASH      , KC_DQT       , KC_QUOT      , KC_EQL       , KC_COLN      ,
+        KC_LABK      , KC_LCBR      , KC_RCBR      , KC_RABK      , KC_AMPR      ,                               KC_AT        , KC_PIPE      , KC_PLUS      , KC_SLSH      , KC_TILD      ,
+        _______      , _______      , _______      , _______      , MO(1)        , ENT_L2       , SPC_RCTL     , KC_RSFT      , _______      , _______      , _______      , _______
+    ),
 
-  [2] = LAYOUT_universal(
-      _______      , KC_1         , KC_2         , KC_3         , TOGGLE_JP    ,                               ALT_SFT_TAB  , ALT_TAB      , CTL_SFT_TAB  , CTL_TAB      , KC_DEL       ,
-      KC_0         , KC_4         , KC_5         , KC_6         , TOGGLE_EN    ,                               KC_LEFT      , KC_DOWN      , KC_UP        , KC_RIGHT     , KC_BSPC      ,
-      _______      , KC_7         , KC_8         , KC_9         , CH_LANG      ,                               SCR_LEFT     , SCR_DOWN     , SCR_UP       , SCR_RGHT     , _______      ,
-      _______      , _______      , _______      , _______      , MO(1)        , ENT_L2       , SPC_RCTL     , KC_RSFT      , _______      , _______      , _______      , _______
-  ),
+    [2] = LAYOUT_universal(
+        _______      , KC_1         , KC_2         , KC_3         , TOGGLE_JP    ,                               ALT_SFT_TAB  , ALT_TAB      , CTL_SFT_TAB  , CTL_TAB      , KC_DEL       ,
+        KC_0         , KC_4         , KC_5         , KC_6         , TOGGLE_EN    ,                               KC_LEFT      , KC_DOWN      , KC_UP        , KC_RIGHT     , KC_BSPC      ,
+        _______      , KC_7         , KC_8         , KC_9         , CH_LANG      ,                               SCR_LEFT     , SCR_DOWN     , SCR_UP       , SCR_RGHT     , _______      ,
+        _______      , _______      , _______      , _______      , MO(1)        , ENT_L2       , SPC_RCTL     , KC_RSFT      , _______      , _______      , _______      , _______
+    ),
 
-  [3] = LAYOUT_universal(
-      _______      , DT_DOWN      , DT_UP        , DT_PRNT      , _______      ,                               _______      , _______      , _______      , _______      , _______      ,
-      KC_MUTE      , KC_VOLD      , KC_VOLU      , SCRN_SHT     , _______      ,                               _______      , _______      , _______      , _______      , _______      ,
-      _______      , KC_BRID      , KC_BRIU      , WIN_SEC      , _______      ,                               _______      , _______      , _______      , _______      , _______      ,
-      _______      , _______      , _______      , _______      , MO(1)        , ENT_L2       , SPC_RCTL     , KC_RSFT      , _______      , _______      , _______      , _______
-  ),
+    [3] = LAYOUT_universal(
+        _______      , DT_DOWN      , DT_UP        , DT_PRNT      , _______      ,                               _______      , _______      , _______      , _______      , _______      ,
+        KC_MUTE      , KC_VOLD      , KC_VOLU      , SCRN_SHT     , _______      ,                               _______      , _______      , _______      , _______      , _______      ,
+        _______      , KC_BRID      , KC_BRIU      , WIN_SEC      , _______      ,                               _______      , _______      , _______      , _______      , _______      ,
+        _______      , _______      , _______      , _______      , MO(1)        , ENT_L2       , SPC_RCTL     , KC_RSFT      , _______      , _______      , _______      , _______
+    ),
 
-  [4] = LAYOUT_universal(
-      _______      , _______      , _______      , _______      , _______      ,                               _______      , BUNNY        , THUMBSUP     , _______      , _______      ,
-      _______      , _______      , _______      , _______      , _______      ,                               _______      , EMAIL        , NAME         , _______      , _______      ,
-      _______      , _______      , _______      , _______      , _______      ,                               _______      , _______      , _______      , _______      , _______      ,
-      _______      , _______      , _______      , _______      , MO(1)        , ENT_L2       , SPC_RCTL     , KC_RSFT      , _______      , _______      , _______      , _______
-  ),
-
-
+    [4] = LAYOUT_universal(
+        _______      , _______      , _______      , _______      , _______      ,                               _______      , BUNNY        , THUMBSUP     , _______      , _______      ,
+        _______      , _______      , _______      , _______      , _______      ,                               _______      , EMAIL        , NAME         , _______      , _______      ,
+        _______      , _______      , _______      , _______      , _______      ,                               _______      , _______      , _______      , _______      , _______      ,
+        _______      , _______      , _______      , _______      , MO(1)        , ENT_L2       , SPC_RCTL     , KC_RSFT      , _______      , _______      , _______      , _______
+    ),
 };
 // clang-format on
 
