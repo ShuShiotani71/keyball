@@ -22,13 +22,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "ascii_arts/ascii_arts.h"
 #include "os_detection.h"
 
-const key_override_t comm_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_COMM, KC_BSLS);
-const key_override_t dot_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_DOT, KC_GRV);
 const key_override_t bspc_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_ESC);
 
 const key_override_t **key_overrides = (const key_override_t *[]){
-    &comm_key_override,
-    &dot_key_override,
     &bspc_key_override,
     NULL};
 
@@ -264,7 +260,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT_universal(
         KC_Q         , KC_W         , KC_E         , KC_R         , KC_T         ,                               KC_Y         , KC_U         , KC_I         , KC_O         , KC_P         ,
         KC_A         , S_LT4        , D_LGUI       , F_LALT       , KC_G         ,                               KC_H         , J_RALT       , K_RGUI       , L_LT3        , KC_BSPC      ,
-        KC_Z         , KC_X         , KC_C         , KC_V         , KC_B         ,                               KC_N         , KC_M         , KC_COMM      , KC_DOT       , KC_TAB       ,
+        KC_Z         , KC_X         , KC_C         , KC_V         , KC_B         ,                               KC_N         , KC_M         , KC_COMM      , KC_DOT       , KC_LGUI      ,
         _______      , _______      , _______      , _______      , MO(1)        , ENT_L2       , SPC_RCTL     , KC_RSFT      , _______      , _______      , _______      , _______
     ),
 
@@ -276,9 +272,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [2] = LAYOUT_universal(
-        _______      , KC_1         , KC_2         , KC_3         , TOGGLE_JP    ,                               ALT_SFT_TAB  , ALT_TAB      , CTL_SFT_TAB  , CTL_TAB      , KC_DEL       ,
-        KC_0         , KC_4         , KC_5         , KC_6         , TOGGLE_EN    ,                               KC_LEFT      , KC_DOWN      , KC_UP        , KC_RIGHT     , KC_BSPC      ,
-        _______      , KC_7         , KC_8         , KC_9         , CH_LANG      ,                               SCR_LEFT     , SCR_DOWN     , SCR_UP       , SCR_RGHT     , _______      ,
+        ALT_SFT_TAB  , CTL_SFT_TAB  , CTL_TAB      , ALT_TAB      , _______      ,                               _______      , _______      , KC_HOME      , KC_END       , _______      ,
+        KC_0         , KC_1         , KC_2         , KC_3         , KC_4         ,                               KC_LEFT      , KC_DOWN      , KC_UP        , KC_RIGHT     , KC_BSPC      ,
+        KC_5         , KC_6         , KC_7         , KC_8         , KC_9         ,                               SCR_LEFT     , SCR_DOWN     , SCR_UP       , SCR_RGHT     , _______      ,
         _______      , _______      , _______      , _______      , MO(1)        , ENT_L2       , SPC_RCTL     , KC_RSFT      , _______      , _______      , _______      , _______
     ),
 
@@ -310,8 +306,6 @@ void oledkit_render_info_user(void)
 }
 #endif
 
-// custom settings
-#ifdef COMBO_ENABLE
 enum combos
 {
     BTN1,
@@ -319,14 +313,21 @@ enum combos
     BTN4,
     BTN5,
     TAB,
-    ESC,
+    EN,
+    JP,
+    DEL,
+    PRNTSCRN,
 };
 const uint16_t PROGMEM btn1[] = {K_RGUI, L_LT3, COMBO_END};
 const uint16_t PROGMEM btn2[] = {KC_COMM, KC_DOT, COMBO_END};
 const uint16_t PROGMEM btn4[] = {J_RALT, K_RGUI, COMBO_END};
 const uint16_t PROGMEM btn5[] = {KC_M, KC_COMM, COMBO_END};
 const uint16_t PROGMEM tab[] = {KC_W, KC_E, COMBO_END};
-const uint16_t PROGMEM esc[] = {S_LT4, D_LGUI, COMBO_END};
+const uint16_t PROGMEM en[] = {S_LT4, D_LGUI, COMBO_END};
+const uint16_t PROGMEM jp[] = {D_LGUI, F_LALT, COMBO_END};
+const uint16_t PROGMEM del[] = {KC_X, KC_C, COMBO_END};
+const uint16_t PROGMEM prntscrn[] = {KC_C, KC_V, COMBO_END};
+
 
 combo_t key_combos[] = {
     [BTN1] = COMBO(btn1, KC_BTN1),
@@ -334,9 +335,11 @@ combo_t key_combos[] = {
     [BTN4] = COMBO(btn4, KC_BTN4),
     [BTN5] = COMBO(btn5, KC_BTN5),
     [TAB] = COMBO(tab, KC_TAB),
-    [ESC] = COMBO(esc, KC_ESC),
+    [EN] = COMBO(en, TOGGLE_EN),
+    [JP] = COMBO(jp, TOGGLE_JP),
+    [DEL] = COMBO(del, KC_DEL),
+    [PRNTSCRN] = COMBO(prntscrn, KC_PSCR),
 };
-#endif
 
 // per key tapping term
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record)
