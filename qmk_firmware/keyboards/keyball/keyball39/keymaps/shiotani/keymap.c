@@ -334,7 +334,7 @@ enum combos
 {
     BTN1,
     BTN2,
-    ENTER,
+    CHANGE_LANG,
     EN,
     JP,
     BTN4,
@@ -344,7 +344,7 @@ enum combos
 };
 const uint16_t PROGMEM btn1[] = {K_RGUI, L_LT3, COMBO_END};
 const uint16_t PROGMEM btn2[] = {KC_COMM, KC_DOT, COMBO_END};
-const uint16_t PROGMEM enter[] = {KC_W, KC_E, COMBO_END};
+const uint16_t PROGMEM change_lang[] = {KC_W, KC_E, COMBO_END};
 const uint16_t PROGMEM en[] = {KC_M, KC_COMM, COMBO_END};
 const uint16_t PROGMEM jp[] = {KC_C, KC_V, COMBO_END};
 const uint16_t PROGMEM btn4[] = {S_LT4, D_LGUI, COMBO_END};
@@ -356,7 +356,7 @@ const uint16_t PROGMEM del[] = {D_LGUI, F_LCS, COMBO_END};
 combo_t key_combos[] = {
     [BTN1] = COMBO(btn1, KC_BTN1),
     [BTN2] = COMBO(btn2, KC_BTN2),
-    [ENTER] = COMBO(enter, KC_ENTER),
+    [CHANGE_LANG] = COMBO(change_lang, CH_LANG),
     [EN] = COMBO(en, TOGGLE_EN),
     [JP] = COMBO(jp, TOGGLE_JP),
     [BTN4] = COMBO(btn4, KC_BTN4),
