@@ -22,9 +22,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define TAP_CODE_DELAY 5
 
-#define DYNAMIC_KEYMAP_LAYER_COUNT 5
+#define DYNAMIC_KEYMAP_LAYER_COUNT 4
 
-#define TAPPING_TERM 250
+#define TAPPING_TERM 170
 #define TAPPING_TERM_PER_KEY
 
 #define COMBO_TERM 35
