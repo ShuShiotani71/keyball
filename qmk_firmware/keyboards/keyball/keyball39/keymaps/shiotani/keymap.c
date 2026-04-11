@@ -22,40 +22,62 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "ascii_arts/ascii_arts.h"
 #include "os_detection.h"
 
-const key_override_t comm_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_COMM, KC_BSLS);
-const key_override_t dot_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_DOT, KC_GRV);
+// esc
 const key_override_t bspc_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_ESC);
+// numbers
+const key_override_t zero_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_0, KC_0);
+const key_override_t one_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_1, KC_1);
+const key_override_t two_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_2, KC_2);
+const key_override_t three_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_3, KC_3);
+const key_override_t four_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_4, KC_4);
+const key_override_t five_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_5, KC_5);
+const key_override_t six_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_6, KC_6);
+const key_override_t seven_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_7, KC_7);
+const key_override_t eight_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_8, KC_8);
+const key_override_t nine_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_9, KC_9);
 
 const key_override_t **key_overrides = (const key_override_t *[]){
-    &comm_key_override,
-    &dot_key_override,
     &bspc_key_override,
-    NULL
-};
+    &zero_key_override,
+    &one_key_override,
+    &two_key_override,
+    &three_key_override,
+    &four_key_override,
+    &five_key_override,
+    &six_key_override,
+    &seven_key_override,
+    &eight_key_override,
+    &nine_key_override,
+    NULL};
 
 bool is_alt_tab_active = false;
 bool is_alt_sft_tab_active = false;
 bool is_ctl_tab_active = false;
 bool is_ctl_sft_tab_active = false;
 
-layer_state_t layer_state_set_user(layer_state_t state) {
+layer_state_t layer_state_set_user(layer_state_t state)
+{
     // Auto enable scroll mode when the highest layer is 3
     keyball_set_scroll_mode(get_highest_layer(state) == 3);
 
-    if (is_alt_tab_active) {
+    if (is_alt_tab_active)
+    {
         unregister_code(KC_LALT);
         is_alt_tab_active = false;
     }
-    if (is_alt_sft_tab_active) {
+    if (is_alt_sft_tab_active)
+    {
         unregister_code(KC_LALT);
         unregister_code(KC_LSFT);
         is_alt_sft_tab_active = false;
     }
-    if (is_ctl_tab_active) {
+    if (is_ctl_tab_active)
+    {
         unregister_code(KC_LCTL);
         is_ctl_tab_active = false;
     }
-    if (is_ctl_sft_tab_active) {
+    if (is_ctl_sft_tab_active)
+    {
         unregister_code(KC_LCTL);
         unregister_code(KC_LSFT);
         is_ctl_sft_tab_active = false;
@@ -63,7 +85,8 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     return state;
 }
 
-enum custom_keycodes {
+enum custom_keycodes
+{
     EMAIL = SAFE_RANGE,
     NAME,
     BUNNY,
@@ -76,147 +99,175 @@ enum custom_keycodes {
     TOGGLE_EN,
 };
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        // custom strings
-        case EMAIL:
-            if (record->event.pressed) {
-                SEND_STRING("shu.shiotani70@gmail.com");
-            }
-            return false;
-        case NAME:
-            if (record->event.pressed) {
-                SEND_STRING("Shu Shiotani");
-            }
-            return false;
-        case BUNNY:
-            if (record->event.pressed) {
-                send_string(BUNNY_ASCII);
-            }
-            return false;
-        case THUMBSUP:
-            if (record->event.pressed) {
-                send_string(THUMBSUP_ASCII);
-            }
-            return false;
+bool process_record_user(uint16_t keycode, keyrecord_t *record)
+{
+    switch (keycode)
+    {
+    // custom strings
+    case EMAIL:
+        if (record->event.pressed)
+        {
+            SEND_STRING("shu.shiotani70@gmail.com");
+        }
+        return false;
+    case NAME:
+        if (record->event.pressed)
+        {
+            SEND_STRING("Shu Shiotani");
+        }
+        return false;
+    case BUNNY:
+        if (record->event.pressed)
+        {
+            send_string(BUNNY_ASCII);
+        }
+        return false;
+    case THUMBSUP:
+        if (record->event.pressed)
+        {
+            send_string(THUMBSUP_ASCII);
+        }
+        return false;
 
-        // custom alt-tab, ctl-tab but with layer key instead
-        case ALT_TAB:
-            if (record->event.pressed) {
-                if (!is_alt_tab_active) {
-                    is_alt_tab_active = true;
-                    register_code(KC_LALT);
-                }
-                register_code(KC_TAB);
-            } else {
-                unregister_code(KC_TAB);
+    // custom alt-tab, ctl-tab but with layer key instead
+    case ALT_TAB:
+        if (record->event.pressed)
+        {
+            if (!is_alt_tab_active)
+            {
+                is_alt_tab_active = true;
+                register_code(KC_LALT);
             }
-            return false;
-        case ALT_SFT_TAB:
-            if (record->event.pressed) {
-                if (!is_alt_sft_tab_active) {
-                    is_alt_sft_tab_active = true;
-                    register_code(KC_LALT);
-                    register_code(KC_LSFT);
-                }
-		// order is super important here; must register shift and then tab
+            register_code(KC_TAB);
+        }
+        else
+        {
+            unregister_code(KC_TAB);
+        }
+        return false;
+    case ALT_SFT_TAB:
+        if (record->event.pressed)
+        {
+            if (!is_alt_sft_tab_active)
+            {
+                is_alt_sft_tab_active = true;
+                register_code(KC_LALT);
                 register_code(KC_LSFT);
-                register_code(KC_TAB);
-            } else {
-                unregister_code(KC_LSFT);
-                unregister_code(KC_TAB);
             }
-            return false;
-        case CTL_TAB:
-            if (record->event.pressed) {
-                if (!is_ctl_tab_active) {
-                    is_ctl_tab_active = true;
-                    register_code(KC_LCTL);
-                }
-                register_code(KC_TAB);
-            } else {
-                unregister_code(KC_TAB);
+            // order is super important here; must register shift and then tab
+            register_code(KC_LSFT);
+            register_code(KC_TAB);
+        }
+        else
+        {
+            unregister_code(KC_LSFT);
+            unregister_code(KC_TAB);
+        }
+        return false;
+    case CTL_TAB:
+        if (record->event.pressed)
+        {
+            if (!is_ctl_tab_active)
+            {
+                is_ctl_tab_active = true;
+                register_code(KC_LCTL);
             }
-            return false;
-        case CTL_SFT_TAB:
-            if (record->event.pressed) {
-                if (!is_ctl_sft_tab_active) {
-                    is_ctl_sft_tab_active = true;
-                    register_code(KC_LCTL);
-                    register_code(KC_LSFT);
-                }
-		// order is super important here; must register shift and then tab
+            register_code(KC_TAB);
+        }
+        else
+        {
+            unregister_code(KC_TAB);
+        }
+        return false;
+    case CTL_SFT_TAB:
+        if (record->event.pressed)
+        {
+            if (!is_ctl_sft_tab_active)
+            {
+                is_ctl_sft_tab_active = true;
+                register_code(KC_LCTL);
                 register_code(KC_LSFT);
-                register_code(KC_TAB);
-            } else {
-                unregister_code(KC_LSFT);
-                unregister_code(KC_TAB);
             }
-            return false;
+            // order is super important here; must register shift and then tab
+            register_code(KC_LSFT);
+            register_code(KC_TAB);
+        }
+        else
+        {
+            unregister_code(KC_LSFT);
+            unregister_code(KC_TAB);
+        }
+        return false;
 
-        // custom keys for toggling lang
-        case TOGGLE_JP:
-            if (record->event.pressed) {
-                switch (detected_host_os()) {
-                  case OS_MACOS:
-                      // JIS_HENKAN
-                      tap_code(KC_INT4);
-                      break;
-                  case OS_IOS:
-                  case OS_WINDOWS:
-                      // HANGUL/ENG
-                      tap_code(KC_LNG1);
-                      break;
-                  case OS_LINUX:
-                      // JIS_HENKAN
-                      tap_code(KC_INT4);
-                      break;
-                  default:
-                      // HANGUL/ENG
-                      tap_code(KC_LNG1);
-                      break;
-                }
+    // custom keys for toggling lang
+    case TOGGLE_JP:
+        if (record->event.pressed)
+        {
+            switch (detected_host_os())
+            {
+            case OS_MACOS:
+                // JIS_HENKAN
+                tap_code(KC_INT4);
+                break;
+            case OS_IOS:
+            case OS_WINDOWS:
+                // HANGUL/ENG
+                tap_code(KC_LNG1);
+                break;
+            case OS_LINUX:
+                // JIS_HENKAN
+                tap_code(KC_INT4);
+                break;
+            default:
+                // HANGUL/ENG
+                tap_code(KC_LNG1);
+                break;
             }
-            return false;
-        case TOGGLE_EN:
-            if (record->event.pressed) {
-                switch (detected_host_os()) {
-                    case OS_MACOS:
-                        // JIS_MUHENKAN
-                        tap_code(KC_INT5);
-                        break;
-                    case OS_IOS:
-                    case OS_WINDOWS:
-                        // HANJA
-                        tap_code(KC_LNG2);
-                        break;
-                    case OS_LINUX:
-                        // JIS_MUHENKAN
-                        tap_code(KC_INT5);
-                        break;
-                    default:
-                        // HANJA
-                        tap_code(KC_LNG2);
-                        break;
-                  }
-              }
-              return false;
+        }
+        return false;
+    case TOGGLE_EN:
+        if (record->event.pressed)
+        {
+            switch (detected_host_os())
+            {
+            case OS_MACOS:
+                // JIS_MUHENKAN
+                tap_code(KC_INT5);
+                break;
+            case OS_IOS:
+            case OS_WINDOWS:
+                // HANJA
+                tap_code(KC_LNG2);
+                break;
+            case OS_LINUX:
+                // JIS_MUHENKAN
+                tap_code(KC_INT5);
+                break;
+            default:
+                // HANJA
+                tap_code(KC_LNG2);
+                break;
+            }
+        }
+        return false;
     }
 
     return true;
 };
 
-
+#define G_LALT MT(MOD_LALT, KC_G)
+#define H_RALT MT(MOD_RALT, KC_H)
 #define D_LGUI MT(MOD_LGUI, KC_D)
-#define F_LALT MT(MOD_LALT, KC_F)
 #define K_RGUI MT(MOD_RGUI, KC_K)
-#define J_RALT MT(MOD_RALT, KC_J)
+#define F_LCS MT(MOD_LCTL | MOD_LSFT, KC_F)
+#define J_RCS MT(MOD_RCTL | MOD_RSFT, KC_J)
 #define L_LT3 LT(3, KC_L)
-#define S_LT4 LT(4, KC_S)
+#define S_LT3 LT(3, KC_S)
 
 #define SPC_RCTL MT(MOD_RCTL, KC_SPC)
+#define ENT_L2 LT(2, KC_ENT)
 
-#define SCRN_SHT LSFT(LGUI(KC_S))
+#define SCRN_SHT RSFT(RGUI(KC_S))
 #define WIN_SEC LCTL(LALT(KC_DEL))
 #define CH_LANG RCTL(KC_SPC)
 
@@ -225,93 +276,89 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #define SCR_UP KC_MS_WH_UP
 #define SCR_RGHT KC_MS_WH_RIGHT
 
-// clang-format off
+#define CTL_SFT LCTL(KC_LSFT)
+
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  // keymap for default (VIA)
-  [0] = LAYOUT_universal(
-      KC_Q         , KC_W         , KC_E         , KC_R         , KC_T         ,                               KC_Y         , KC_U         , KC_I         , KC_O         , KC_P         ,
-      KC_A         , S_LT4        , D_LGUI       , F_LALT       , KC_G         ,                               KC_H         , J_RALT       , K_RGUI       , L_LT3        , KC_BSPC      ,
-      KC_Z         , KC_X         , KC_C         , KC_V         , KC_B         ,                               KC_N         , KC_M         , KC_COMM      , KC_DOT       , _______      ,
-      _______      , _______      , _______      , _______      , MO(1)        , MO(2)        , SPC_RCTL     , KC_RSFT      , _______      , _______      , _______      , _______
-  ),
+    [0] = LAYOUT_universal(
+        KC_Q         , KC_W         , KC_E         , KC_R         , KC_T         ,                               KC_Y         , KC_U         , KC_I         , KC_O         , KC_P         ,
+        KC_A         , S_LT3        , D_LGUI       , F_LCS        , G_LALT       ,                               H_RALT       , J_RCS        , K_RGUI       , L_LT3        , KC_BSPC      ,
+        KC_Z         , KC_X         , KC_C         , KC_V         , KC_B         ,                               KC_N         , KC_M         , KC_COMM      , KC_DOT       , KC_LGUI      ,
+        _______      , _______      , _______      , _______      , MO(1)        , ENT_L2       , SPC_RCTL     , KC_RSFT      , _______      , _______      , _______      , _______
+    ),
 
-  [1] = LAYOUT_universal(
-      KC_CIRC      , KC_LBRC      , KC_RBRC      , KC_DLR       , KC_ASTR      ,                               KC_HASH      , KC_EXLM      , KC_QUES      , KC_SCLN      , _______      ,
-      KC_MINS      , KC_LPRN      , KC_RPRN      , KC_UNDS      , KC_PIPE      ,                               KC_AT        , KC_DQT       , KC_QUOT      , KC_COLN      , KC_BSPC      ,
-      KC_LABK      , KC_LCBR      , KC_RCBR      , KC_RABK      , KC_AMPR      ,                               KC_PERC      , KC_EQL       , KC_PLUS      , KC_TILD      , KC_SLSH      ,
-      _______      , _______      , _______      , _______      , _______      , _______      , SPC_RCTL     , KC_RSFT      , _______      , _______      , _______      , _______
-  ),
+    [1] = LAYOUT_universal(
+        KC_GRV       , KC_LBRC      , KC_RBRC      , KC_BSLS      , KC_PERC      ,                               KC_QUES      , KC_EXLM      , KC_CIRC      , KC_DLR       , KC_SCLN      ,
+        KC_MINS      , KC_LPRN      , KC_RPRN      , KC_UNDS      , KC_ASTR      ,                               KC_HASH      , KC_DQT       , KC_QUOT      , KC_EQL       , KC_COLN      ,
+        KC_LABK      , KC_LCBR      , KC_RCBR      , KC_RABK      , KC_AMPR      ,                               KC_AT        , KC_PIPE      , KC_PLUS      , KC_SLSH      , KC_TILD      ,
+        _______      , _______      , _______      , _______      , MO(1)        , ENT_L2       , SPC_RCTL     , KC_RSFT      , _______      , _______      , _______      , _______
+    ),
 
-  [2] = LAYOUT_universal(
-      _______      , KC_1         , KC_2         , KC_3         , TOGGLE_JP    ,                               ALT_SFT_TAB  , CTL_SFT_TAB  , CTL_TAB      , ALT_TAB      , _______      ,
-      KC_0         , KC_4         , KC_5         , KC_6         , TOGGLE_EN    ,                               KC_LEFT      , KC_DOWN      , KC_UP        , KC_RIGHT     , KC_BSPC      ,
-      _______      , KC_7         , KC_8         , KC_9         , CH_LANG      ,                               SCR_LEFT     , SCR_DOWN     , SCR_UP       , SCR_RGHT     , _______      ,
-      _______      , _______      , _______      , _______      , _______      , _______      , SPC_RCTL     , KC_RSFT      , _______      , _______      , _______      , _______
-  ),
+    [2] = LAYOUT_universal(
+        KC_9         , KC_8         , KC_7         , KC_6         , KC_5         ,                               ALT_SFT_TAB  , ALT_TAB      , CTL_SFT_TAB  , CTL_TAB      , _______      ,
+        KC_0         , KC_1         , KC_2         , KC_3         , KC_4         ,                               KC_LEFT      , KC_DOWN      , KC_UP        , KC_RIGHT     , KC_BSPC      ,
+        _______      , _______      , _______      , _______      , _______      ,                               SCR_LEFT     , SCR_DOWN     , SCR_UP       , SCR_RGHT     , _______      ,
+        _______      , _______      , _______      , _______      , MO(1)        , ENT_L2       , SPC_RCTL     , KC_RSFT      , _______      , _______      , _______      , _______
+    ),
 
-  [3] = LAYOUT_universal(
-      _______      , _______      , _______      , _______      , _______      ,                               _______      , _______      , _______      , _______      , _______      ,
-      KC_MUTE      , KC_VOLD      , KC_VOLU      , SCRN_SHT     , _______      ,                               _______      , KC_BTN4      , KC_BTN5      , _______      , _______      ,
-      _______      , KC_BRID      , KC_BRIU      , WIN_SEC      , _______      ,                               _______      , _______      , _______      , _______      , _______      ,
-      _______      , _______      , _______      , _______      , MO(1)        , MO(2)        , SPC_RCTL     , KC_RSFT      , _______      , _______      , _______      , _______
-  ),
-
-  [4] = LAYOUT_universal(
-      _______      , _______      , _______      , _______      , _______      ,                               _______      , BUNNY        , THUMBSUP     , _______      , _______      ,
-      _______      , _______      , _______      , _______      , _______      ,                               _______      , EMAIL        , NAME         , _______      , _______      ,
-      _______      , _______      , _______      , _______      , _______      ,                               _______      , _______      , _______      , _______      , _______      ,
-      _______      , _______      , _______      , _______      , MO(1)        , MO(2)        , SPC_RCTL     , KC_RSFT      , _______      , _______      , _______      , _______
-  ),
-
-
+    [3] = LAYOUT_universal(
+        KC_SLEP      , DT_DOWN      , DT_UP        , DT_PRNT      , _______      ,                               _______      , BUNNY        , THUMBSUP     , _______      , _______      ,
+        KC_MUTE      , KC_VOLD      , KC_VOLU      , SCRN_SHT     , _______      ,                               _______      , EMAIL        , NAME         , _______      , _______      ,
+        KC_MPLY      , KC_BRID      , KC_BRIU      , WIN_SEC      , _______      ,                               _______      , _______      , _______      , _______      , _______      ,
+        _______      , _______      , _______      , _______      , MO(1)        , ENT_L2       , SPC_RCTL     , KC_RSFT      , _______      , _______      , _______      , _______
+    ),
 };
-// clang-format on
 
-
-#ifdef OLED_ENABLE
-
-#    include "lib/oledkit/oledkit.h"
-
-void oledkit_render_info_user(void) {
+#include "lib/oledkit/oledkit.h"
+void oledkit_render_info_user(void)
+{
     keyball_oled_render_keyinfo();
     keyball_oled_render_ballinfo();
     keyball_oled_render_layerinfo();
 }
-#endif
 
-
-// custom settings
-#ifdef COMBO_ENABLE
-enum combos{
-  BTN1,
-  BTN2,
-  TAB,
-  ENTER,
-  DELETE,
+enum combos
+{
+    BTN1,
+    BTN2,
+    CHANGE_LANG,
+    BTN4,
+    BTN5,
+    TAB,
+    DEL,
+    PRNTSCRN,
 };
-const uint16_t PROGMEM btn1[] = {MT(MOD_RGUI, KC_K), LT(3, KC_L), COMBO_END};
+const uint16_t PROGMEM btn1[] = {K_RGUI, L_LT3, COMBO_END};
 const uint16_t PROGMEM btn2[] = {KC_COMM, KC_DOT, COMBO_END};
-const uint16_t PROGMEM tab[] = {KC_W, KC_E, COMBO_END};
-const uint16_t PROGMEM enter[] = {KC_I, KC_O, COMBO_END};
-const uint16_t PROGMEM delete[] = {KC_X, KC_C, COMBO_END};
+const uint16_t PROGMEM change_lang[] = {KC_M, KC_COMM, COMBO_END};
+const uint16_t PROGMEM btn4[] = {S_LT3, D_LGUI, COMBO_END};
+const uint16_t PROGMEM btn5[] = {KC_X, KC_C, COMBO_END};
+const uint16_t PROGMEM tab[] = {J_RCS, K_RGUI, COMBO_END};
+const uint16_t PROGMEM del[] = {D_LGUI, F_LCS, COMBO_END};
+const uint16_t PROGMEM prntscrn[] = {KC_C, KC_V, COMBO_END};
+
 
 combo_t key_combos[] = {
-  [BTN1] = COMBO(btn1, KC_BTN1),
-  [BTN2] = COMBO(btn2, KC_BTN2),
-  [TAB] = COMBO(tab, KC_TAB),
-  [ENTER] = COMBO(enter, KC_ENT),
-  [DELETE] = COMBO(delete, KC_DEL),
+    [BTN1] = COMBO(btn1, KC_BTN1),
+    [BTN2] = COMBO(btn2, KC_BTN2),
+    [CHANGE_LANG] = COMBO(change_lang, CH_LANG),
+    [BTN4] = COMBO(btn4, KC_BTN4),
+    [BTN5] = COMBO(btn5, KC_BTN5),
+    [TAB] = COMBO(tab, KC_TAB),
+    [DEL] = COMBO(del, KC_DEL),
+    [PRNTSCRN] = COMBO(prntscrn, KC_PSCR),
 };
-#endif
 
 // per key tapping term
-uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case MT(MOD_RCTL, KC_SPC):
-            return TAPPING_TERM - 120;
-        default:
-            return TAPPING_TERM;
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record)
+{
+    switch (keycode)
+    {
+    case ENT_L2:
+        return g_tapping_term;
+    case SPC_RCTL:
+        return g_tapping_term;
+    default:
+        return 250; // fixed since unlikely to change
     }
 }
-
-
