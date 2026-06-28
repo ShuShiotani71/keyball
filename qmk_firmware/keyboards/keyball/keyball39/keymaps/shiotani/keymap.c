@@ -337,10 +337,10 @@ enum combos
 };
 const uint16_t PROGMEM btn1[] = {K_RGUI, L_LT3, COMBO_END};
 const uint16_t PROGMEM btn2[] = {KC_COMM, KC_DOT, COMBO_END};
-const uint16_t PROGMEM btn4[] = {J_RCS, K_RGUI, COMBO_END};
-const uint16_t PROGMEM btn5[] = {KC_M, KC_COMM, COMBO_END};
-const uint16_t PROGMEM change_lang[] = {D_LGUI, F_LCS, COMBO_END};
-const uint16_t PROGMEM del[] = {KC_C, KC_V, COMBO_END};
+const uint16_t PROGMEM btn4[] = {S_LT3, D_LGUI, COMBO_END};
+const uint16_t PROGMEM btn5[] = {KC_X, KC_C, COMBO_END};
+const uint16_t PROGMEM change_lang[] = {J_RCS, K_RGUI, COMBO_END};
+const uint16_t PROGMEM del[] = {KC_M, KC_COMM, COMBO_END};
 
 
 combo_t key_combos[] = {
