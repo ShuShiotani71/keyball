@@ -265,11 +265,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
 #define S_LT3 LT(3, KC_S)
 
 #define SPC_RCTL MT(MOD_RCTL, KC_SPC)
-#define ENT_L2 LT(2, KC_ENT)
+#define ENT_L2 LT(2, KC_ENT) // currently unused
 
 #define SCRN_SHT RSFT(RGUI(KC_S))
 #define WIN_SEC LCTL(LALT(KC_DEL))
 #define CH_LANG RCTL(KC_SPC)
+#define CLOSE_WIN RALT(KC_F4)
 
 #define SCR_LEFT KC_MS_WH_LEFT
 #define SCR_DOWN KC_MS_WH_DOWN
@@ -292,20 +293,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_GRV       , KC_LBRC      , KC_RBRC      , KC_BSLS      , KC_PERC      ,                               KC_QUES      , KC_EXLM      , KC_CIRC      , KC_DLR       , KC_SCLN      ,
         KC_MINS      , KC_LPRN      , KC_RPRN      , KC_UNDS      , KC_ASTR      ,                               KC_HASH      , KC_DQT       , KC_QUOT      , KC_EQL       , KC_COLN      ,
         KC_LABK      , KC_LCBR      , KC_RCBR      , KC_RABK      , KC_AMPR      ,                               KC_AT        , KC_PIPE      , KC_PLUS      , KC_SLSH      , KC_TILD      ,
-        _______      , _______      , _______      , _______      , MO(1)        , MO(2)        , SPC_RCTL     , KC_RSFT      , _______      , _______      , _______      , _______
+        _______      , _______      , _______      , _______      , MO(1)        , MO(2)        , KC_ENT       , KC_TAB       , _______      , _______      , _______      , _______
     ),
 
     [2] = LAYOUT_universal(
         KC_9         , KC_8         , KC_7         , KC_6         , KC_5         ,                               ALT_SFT_TAB  , ALT_TAB      , CTL_SFT_TAB  , CTL_TAB      , _______      ,
         KC_0         , KC_1         , KC_2         , KC_3         , KC_4         ,                               KC_LEFT      , KC_DOWN      , KC_UP        , KC_RIGHT     , KC_BSPC      ,
         _______      , _______      , _______      , _______      , _______      ,                               SCR_LEFT     , SCR_DOWN     , SCR_UP       , SCR_RGHT     , _______      ,
-        _______      , _______      , _______      , _______      , MO(1)        , MO(2)        , SPC_RCTL     , KC_RSFT      , _______      , _______      , _______      , _______
+        _______      , _______      , _______      , _______      , MO(1)        , MO(2)        , KC_ENT       , KC_TAB       , _______      , _______      , _______      , _______
     ),
 
     [3] = LAYOUT_universal(
-        KC_SLEP      , DT_DOWN      , DT_UP        , DT_PRNT      , _______      ,                               _______      , BUNNY        , THUMBSUP     , _______      , _______      ,
-        KC_MUTE      , KC_VOLD      , KC_VOLU      , SCRN_SHT     , _______      ,                               _______      , EMAIL        , NAME         , _______      , _______      ,
-        KC_MPLY      , KC_BRID      , KC_BRIU      , WIN_SEC      , _______      ,                               _______      , _______      , _______      , _______      , _______      ,
+        _______      , DT_DOWN      , DT_UP        , DT_PRNT      , _______      ,                               _______      , BUNNY        , THUMBSUP     , _______      , _______      ,
+        KC_MUTE      , KC_VOLD      , KC_VOLU      , SCRN_SHT     , CLOSE_WIN    ,                               _______      , EMAIL        , NAME         , _______      , _______      ,
+        KC_MPLY      , KC_BRID      , KC_BRIU      , WIN_SEC      , KC_SLEP      ,                               _______      , _______      , _______      , _______      , _______      ,
         _______      , _______      , _______      , _______      , MO(1)        , MO(2)        , SPC_RCTL     , KC_RSFT      , _______      , _______      , _______      , _______
     ),
 
@@ -329,34 +330,25 @@ enum combos
 {
     BTN1,
     BTN2,
-    CHANGE_LANG,
     BTN4,
     BTN5,
-    TAB,
-    ENT,
-    ESC,
+    CHANGE_LANG,
     DEL,
 };
 const uint16_t PROGMEM btn1[] = {K_RGUI, L_LT3, COMBO_END};
 const uint16_t PROGMEM btn2[] = {KC_COMM, KC_DOT, COMBO_END};
-const uint16_t PROGMEM change_lang[] = {KC_C, KC_V, COMBO_END};
-const uint16_t PROGMEM btn4[] = {S_LT3, D_LGUI, COMBO_END};
-const uint16_t PROGMEM btn5[] = {KC_X, KC_C, COMBO_END};
-const uint16_t PROGMEM tab[] = {J_RCS, K_RGUI, COMBO_END};
-const uint16_t PROGMEM ent[] = {D_LGUI, F_LCS, COMBO_END};
-const uint16_t PROGMEM esc[] = {KC_M, KC_COMM, COMBO_END};
-const uint16_t PROGMEM del[] = {KC_W, KC_E, COMBO_END};
+const uint16_t PROGMEM btn4[] = {J_RCS, K_RGUI, COMBO_END};
+const uint16_t PROGMEM btn5[] = {KC_M, KC_COMM, COMBO_END};
+const uint16_t PROGMEM change_lang[] = {D_LGUI, F_LCS, COMBO_END};
+const uint16_t PROGMEM del[] = {KC_C, KC_V, COMBO_END};
 
 
 combo_t key_combos[] = {
     [BTN1] = COMBO(btn1, KC_BTN1),
     [BTN2] = COMBO(btn2, KC_BTN2),
-    [CHANGE_LANG] = COMBO(change_lang, CH_LANG),
     [BTN4] = COMBO(btn4, KC_BTN4),
     [BTN5] = COMBO(btn5, KC_BTN5),
-    [TAB] = COMBO(tab, KC_TAB),
-    [ENT] = COMBO(ent, KC_ENT),
-    [ESC] = COMBO(esc, KC_ESC),
+    [CHANGE_LANG] = COMBO(change_lang, CH_LANG),
     [DEL] = COMBO(del, KC_DEL),
 };
 
