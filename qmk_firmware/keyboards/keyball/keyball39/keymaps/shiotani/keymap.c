@@ -23,7 +23,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "os_detection.h"
 
 // esc
-const key_override_t bspc_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_TAB);
+const key_override_t bspc_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_ESC);
 // numbers
 const key_override_t zero_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_0, KC_0);
 const key_override_t one_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_1, KC_1);
@@ -335,7 +335,7 @@ enum combos
     BTN2,
     BTN4,
     BTN5,
-    ESC,
+    TAB,
     CHANGE_LANG,
     DEL,
 };
@@ -343,7 +343,7 @@ const uint16_t PROGMEM btn1[] = {K_RGUI, L_LT3, COMBO_END};
 const uint16_t PROGMEM btn2[] = {KC_COMM, KC_DOT, COMBO_END};
 const uint16_t PROGMEM btn4[] = {S_LT3, D_LGUI, COMBO_END};
 const uint16_t PROGMEM btn5[] = {KC_X, KC_C, COMBO_END};
-const uint16_t PROGMEM esc[] = {J_RCS, K_RGUI, COMBO_END};
+const uint16_t PROGMEM tab[] = {J_RCS, K_RGUI, COMBO_END};
 const uint16_t PROGMEM change_lang[] = {KC_M, KC_COMM, COMBO_END};
 const uint16_t PROGMEM del[] = {KC_C, KC_V, COMBO_END};
 
@@ -353,7 +353,7 @@ combo_t key_combos[] = {
     [BTN2] = COMBO(btn2, KC_BTN2),
     [BTN4] = COMBO(btn4, KC_BTN4),
     [BTN5] = COMBO(btn5, KC_BTN5),
-    [ESC] = COMBO(esc, KC_ESC),
+    [TAB] = COMBO(tab, KC_TAB),
     [CHANGE_LANG] = COMBO(change_lang, CH_LANG),
     [DEL] = COMBO(del, KC_DEL),
 };
